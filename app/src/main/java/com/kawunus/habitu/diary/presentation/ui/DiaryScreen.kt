@@ -25,10 +25,10 @@ fun DiaryScreen() {
                 DiaryContent(
                     notesList = (state as DiaryScreenState.Content).content,
                     modifier = Modifier.padding(innerPadding),
-                    onEditClick = { note ->
+                    onNoteEditClick = { note ->
 
                     },
-                    onDeleteClick = { note ->
+                    onNoteDeleteClick = { note ->
                         viewModel.deleteNote(note)
                     }
                 )

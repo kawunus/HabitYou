@@ -11,8 +11,8 @@ import com.kawunus.habitu.diary.domain.model.Note
 internal fun DiaryContent(
     notesList: List<Note>,
     modifier: Modifier = Modifier,
-    onEditClick: (Note) -> Unit,
-    onDeleteClick: (Note) -> Unit
+    onNoteEditClick: (Note) -> Unit,
+    onNoteDeleteClick: (Note) -> Unit
 ) {
     LazyColumn(
         modifier = modifier.fillMaxSize()
@@ -20,8 +20,8 @@ internal fun DiaryContent(
         itemsIndexed(notesList) { index, note ->
             NoteItem(
                 note = note,
-                onEditClick = { onEditClick(note) },
-                onDeleteClick = { onDeleteClick(note) })
+                onEditClick = { onNoteEditClick(note) },
+                onDeleteClick = { onNoteDeleteClick(note) })
         }
     }
 }

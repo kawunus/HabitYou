@@ -23,7 +23,7 @@ private fun DiaryScreenPreview_Content() {
         notesList = listOf(
             Note(id = 1, title = "Test 1", content = "Text...", date = 123456789),
             Note(id = 2, title = "Test 2", content = "Another one", date = 13032923)
-        ), onEditClick = {}, onDeleteClick = {})
+        ), onNoteEditClick = {}, onNoteDeleteClick = {})
 }
 
 @Preview
