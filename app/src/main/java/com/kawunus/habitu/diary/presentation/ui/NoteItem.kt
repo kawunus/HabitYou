@@ -29,14 +29,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kawunus.habitu.diary.domain.model.Note
 import com.kawunus.habitu.utils.formatDate
 
 @Composable
-fun NoteItem(
-    note: Note, onEditClick: () -> Unit = {}, onDeleteClick: () -> Unit = {}
+internal fun NoteItem(
+    note: Note, onEditClick: () -> Unit, onDeleteClick: () -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -113,15 +112,4 @@ fun NoteItem(
             }
         }
     }
-}
-
-
-@Preview
-@Composable
-private fun PreviewNoteItem() {
-    NoteItem(
-        Note(
-            id = 0, content = "Some content", date = 12345679, title = "Youuuuu"
-        )
-    )
 }
