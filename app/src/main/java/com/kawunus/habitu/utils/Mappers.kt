@@ -6,6 +6,7 @@ import com.kawunus.habitu.diary.domain.model.Note
 
 fun NoteDto.toNoteEntity(): NoteEntity {
     return NoteEntity(
+        id = id,
         content = content,
         date = date,
         title = title

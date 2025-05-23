@@ -1,5 +1,6 @@
 package com.kawunus.habitu.diary.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kawunus.habitu.diary.domain.api.NoteInteractor
@@ -7,6 +8,7 @@ import com.kawunus.habitu.diary.domain.model.Note
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class DiaryViewModel(
     private val noteInteractor: NoteInteractor
@@ -34,12 +36,21 @@ class DiaryViewModel(
             renderState(DiaryScreenState.Empty)
         } else {
             renderState(DiaryScreenState.Content(notesList))
+            Log.d("DiaryViewModel", "$notesList")
         }
     }
 
     fun deleteNote(note: Note) {
         viewModelScope.launch {
             noteInteractor.deleteNote(note)
+            getData()
+        }
+    }
+
+    fun insertNote(note: Note = Note(title = "test", content = "test", date = Random.nextLong())) {
+        viewModelScope.launch {
+            noteInteractor.insertNote(note)
+            getData()
         }
     }
 }

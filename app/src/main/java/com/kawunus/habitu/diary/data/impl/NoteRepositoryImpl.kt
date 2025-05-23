@@ -1,5 +1,6 @@
 package com.kawunus.habitu.diary.data.impl
 
+import android.util.Log
 import com.kawunus.habitu.core.database.dao.NoteDao
 import com.kawunus.habitu.diary.data.dto.NoteDto
 import com.kawunus.habitu.diary.domain.api.NoteRepository
@@ -15,6 +16,7 @@ class NoteRepositoryImpl(private val noteDao: NoteDao) : NoteRepository {
 
     override suspend fun deleteNote(note: NoteDto) {
         noteDao.deleteNote(note.toNoteEntity())
+        Log.d("DiaryViewModel", "1 Удаляем заметку: ${note}")
     }
 
     override suspend fun updateNote(note: NoteDto) {
