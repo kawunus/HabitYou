@@ -17,4 +17,6 @@ val dataModule = module {
     }
 
     single { get<AppDatabase>().badHabitDao() }
+
+    single { get<AppDatabase>().noteDao() }
 }
