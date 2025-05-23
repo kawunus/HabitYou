@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Habitu</string>
+
+    <!-- Bottom Navigation Bar -->
+    <string name="diary">Дневник</string>
+    <string name="bad_habits">Вредные привычки</string>
+    <string name="useful_habits">Полезные привычки</string>
 </resources>
