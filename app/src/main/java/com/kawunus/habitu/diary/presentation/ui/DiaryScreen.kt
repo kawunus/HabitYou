@@ -1,6 +1,6 @@
 package com.kawunus.habitu.diary.presentation.ui
 
-import androidx.compose.foundation.layout.padding
+import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
@@ -10,12 +10,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import com.kawunus.habitu.diary.presentation.viewmodel.DiaryScreenState
 import com.kawunus.habitu.diary.presentation.viewmodel.DiaryViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 fun DiaryScreen() {
     val viewModel: DiaryViewModel = koinViewModel()
     val state by viewModel.state.collectAsState()
@@ -31,8 +31,7 @@ fun DiaryScreen() {
                     Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
                 }
             }
-        }
-    ) { innerPadding ->
+        }) {
         when (state) {
             is DiaryScreenState.Content -> {
                 DiaryContent(
@@ -42,18 +41,16 @@ fun DiaryScreen() {
                     },
                     onNoteDeleteClick = { note ->
                         viewModel.deleteNote(note)
-                    }
-                )
+                    })
             }
 
             DiaryScreenState.Empty -> {
-                DiaryEmpty(modifier = Modifier.padding(innerPadding))
+                DiaryEmpty()
             }
 
             DiaryScreenState.Loading -> {
-                DiaryLoading(modifier = Modifier.padding(innerPadding))
+                DiaryLoading()
             }
         }
     }
 }
-
