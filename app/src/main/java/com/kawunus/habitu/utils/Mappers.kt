@@ -7,7 +7,8 @@ import com.kawunus.habitu.diary.domain.model.Note
 fun NoteDto.toNoteEntity(): NoteEntity {
     return NoteEntity(
         content = content,
-        date = date
+        date = date,
+        title = title
     )
 }
 
@@ -15,7 +16,8 @@ fun NoteEntity.toNoteDto(): NoteDto {
     return NoteDto(
         id = id,
         content = content,
-        date = date
+        date = date,
+        title = title
     )
 }
 
@@ -23,7 +25,8 @@ fun Note.toNoteDto(): NoteDto {
     return NoteDto(
         id = id,
         content = content,
-        date = date
+        date = date,
+        title = title
     )
 }
 
@@ -31,6 +34,7 @@ fun NoteDto.toNote(): Note {
     return Note(
         id = id,
         content = content,
-        date = date
+        date = date,
+        title = title
     )
 }

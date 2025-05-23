@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.kawunus.habitu.diary.presentation.ui.DiaryScreen
 
 @Preview
 @Composable
@@ -32,13 +33,6 @@ fun RootScreen() {
             composable(BottomNavItem.UsefulHabits.route) { UsefulHabitsScreen() }
         }
 
-    }
-}
-
-@Composable
-fun DiaryScreen() {
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Дневник")
     }
 }
 
