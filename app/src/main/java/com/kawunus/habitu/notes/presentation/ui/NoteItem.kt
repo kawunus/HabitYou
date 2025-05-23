@@ -1,4 +1,4 @@
-package com.kawunus.habitu.diary.presentation.ui
+package com.kawunus.habitu.notes.presentation.ui
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -30,7 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
-import com.kawunus.habitu.diary.domain.model.Note
+import com.kawunus.habitu.notes.domain.model.Note
 import com.kawunus.habitu.utils.formatDate
 
 @Composable

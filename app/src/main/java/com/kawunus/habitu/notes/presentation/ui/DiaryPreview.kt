@@ -1,8 +1,8 @@
-package com.kawunus.habitu.diary.presentation.ui
+package com.kawunus.habitu.notes.presentation.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.kawunus.habitu.diary.domain.model.Note
+import com.kawunus.habitu.notes.domain.model.Note
 
 @Preview(showBackground = true)
 @Composable

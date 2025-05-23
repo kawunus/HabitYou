@@ -22,7 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.kawunus.habitu.diary.presentation.ui.DiaryScreen
+import com.kawunus.habitu.notes.presentation.ui.DiaryScreen
 import org.koin.compose.koinInject
 
 @ExperimentalMaterial3Api

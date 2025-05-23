@@ -1,4 +1,4 @@
-package com.kawunus.habitu.diary.presentation.ui
+package com.kawunus.habitu.notes.presentation.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

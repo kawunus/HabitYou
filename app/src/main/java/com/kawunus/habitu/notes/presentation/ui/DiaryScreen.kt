@@ -1,4 +1,4 @@
-package com.kawunus.habitu.diary.presentation.ui
+package com.kawunus.habitu.notes.presentation.ui
 
 import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.kawunus.habitu.diary.presentation.viewmodel.DiaryScreenState
-import com.kawunus.habitu.diary.presentation.viewmodel.DiaryViewModel
+import com.kawunus.habitu.notes.presentation.viewmodel.DiaryScreenState
+import com.kawunus.habitu.notes.presentation.viewmodel.DiaryViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

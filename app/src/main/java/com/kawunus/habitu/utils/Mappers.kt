@@ -1,8 +1,8 @@
 package com.kawunus.habitu.utils
 
 import com.kawunus.habitu.core.database.entity.NoteEntity
-import com.kawunus.habitu.diary.data.dto.NoteDto
-import com.kawunus.habitu.diary.domain.model.Note
+import com.kawunus.habitu.notes.data.dto.NoteDto
+import com.kawunus.habitu.notes.domain.model.Note
 
 fun NoteDto.toNoteEntity(): NoteEntity {
     return NoteEntity(

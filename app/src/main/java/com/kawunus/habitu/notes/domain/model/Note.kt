@@ -1,6 +1,6 @@
-package com.kawunus.habitu.diary.data.dto
+package com.kawunus.habitu.notes.domain.model
 
-data class NoteDto(
+data class Note(
     val id: Int = 0,
     val content: String,
     val date: Long,

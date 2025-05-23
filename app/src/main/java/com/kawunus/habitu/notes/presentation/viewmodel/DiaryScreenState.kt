@@ -1,6 +1,6 @@
-package com.kawunus.habitu.diary.presentation.viewmodel
+package com.kawunus.habitu.notes.presentation.viewmodel
 
-import com.kawunus.habitu.diary.domain.model.Note
+import com.kawunus.habitu.notes.domain.model.Note
 
 sealed class DiaryScreenState {
 

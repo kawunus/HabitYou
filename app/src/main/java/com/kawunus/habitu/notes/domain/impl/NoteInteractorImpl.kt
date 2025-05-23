@@ -1,8 +1,8 @@
-package com.kawunus.habitu.diary.domain.impl
+package com.kawunus.habitu.notes.domain.impl
 
-import com.kawunus.habitu.diary.domain.api.NoteInteractor
-import com.kawunus.habitu.diary.domain.api.NoteRepository
-import com.kawunus.habitu.diary.domain.model.Note
+import com.kawunus.habitu.notes.domain.api.NoteInteractor
+import com.kawunus.habitu.notes.domain.api.NoteRepository
+import com.kawunus.habitu.notes.domain.model.Note
 import com.kawunus.habitu.utils.toNote
 import com.kawunus.habitu.utils.toNoteDto
 import kotlinx.coroutines.flow.Flow

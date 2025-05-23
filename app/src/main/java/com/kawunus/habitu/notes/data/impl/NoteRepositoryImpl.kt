@@ -1,8 +1,8 @@
-package com.kawunus.habitu.diary.data.impl
+package com.kawunus.habitu.notes.data.impl
 
 import com.kawunus.habitu.core.database.dao.NoteDao
-import com.kawunus.habitu.diary.data.dto.NoteDto
-import com.kawunus.habitu.diary.domain.api.NoteRepository
+import com.kawunus.habitu.notes.data.dto.NoteDto
+import com.kawunus.habitu.notes.domain.api.NoteRepository
 import com.kawunus.habitu.utils.toNoteDto
 import com.kawunus.habitu.utils.toNoteEntity
 import kotlinx.coroutines.flow.Flow

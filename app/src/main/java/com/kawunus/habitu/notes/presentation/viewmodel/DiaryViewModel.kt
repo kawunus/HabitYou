@@ -1,9 +1,9 @@
-package com.kawunus.habitu.diary.presentation.viewmodel
+package com.kawunus.habitu.notes.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kawunus.habitu.diary.domain.api.NoteInteractor
-import com.kawunus.habitu.diary.domain.model.Note
+import com.kawunus.habitu.notes.domain.api.NoteInteractor
+import com.kawunus.habitu.notes.domain.model.Note
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

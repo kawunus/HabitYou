@@ -1,6 +1,6 @@
-package com.kawunus.habitu.diary.domain.api
+package com.kawunus.habitu.notes.domain.api
 
-import com.kawunus.habitu.diary.data.dto.NoteDto
+import com.kawunus.habitu.notes.data.dto.NoteDto
 import kotlinx.coroutines.flow.Flow
 
 interface NoteRepository {

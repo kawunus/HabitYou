@@ -1,11 +1,11 @@
-package com.kawunus.habitu.diary.presentation.ui
+package com.kawunus.habitu.notes.presentation.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.kawunus.habitu.diary.domain.model.Note
+import com.kawunus.habitu.notes.domain.model.Note
 
 @Composable
 internal fun DiaryContent(
