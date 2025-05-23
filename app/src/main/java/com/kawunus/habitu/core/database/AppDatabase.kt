@@ -1,11 +1,11 @@
-package com.kawunus.habitu.data.db
+package com.kawunus.habitu.core.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.kawunus.habitu.data.db.dao.BadHabitDao
-import com.kawunus.habitu.data.db.dao.NoteDao
-import com.kawunus.habitu.data.db.entity.BadHabitEntity
-import com.kawunus.habitu.data.db.entity.NoteEntity
+import com.kawunus.habitu.core.database.dao.BadHabitDao
+import com.kawunus.habitu.core.database.dao.NoteDao
+import com.kawunus.habitu.core.database.entity.BadHabitEntity
+import com.kawunus.habitu.core.database.entity.NoteEntity
 
 @Database(
     version = 1, entities = [BadHabitEntity::class, NoteEntity::class]

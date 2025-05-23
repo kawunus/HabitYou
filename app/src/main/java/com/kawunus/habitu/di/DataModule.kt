@@ -2,7 +2,7 @@ package com.kawunus.habitu.di
 
 import android.content.Context
 import androidx.room.Room
-import com.kawunus.habitu.data.db.AppDatabase
+import com.kawunus.habitu.core.database.AppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

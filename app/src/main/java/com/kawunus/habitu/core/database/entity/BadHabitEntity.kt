@@ -1,4 +1,4 @@
-package com.kawunus.habitu.data.db.entity
+package com.kawunus.habitu.core.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

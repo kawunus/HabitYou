@@ -1,11 +1,11 @@
-package com.kawunus.habitu.data.db.dao
+package com.kawunus.habitu.core.database.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.kawunus.habitu.data.db.entity.BadHabitEntity
+import com.kawunus.habitu.core.database.entity.BadHabitEntity
 
 @Dao
 interface BadHabitDao {
