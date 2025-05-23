@@ -1,6 +1,10 @@
 package com.kawunus.habitu.diary.presentation.ui
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -13,34 +17,37 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DiaryScreen() {
-    val viewModel: DiaryViewModel = koinViewModel<DiaryViewModel>()
+    val viewModel: DiaryViewModel = koinViewModel()
     val state by viewModel.state.collectAsState()
 
     LaunchedEffect(viewModel) {
         viewModel.getData()
     }
-    Scaffold { innerPadding ->
+
+    Scaffold(
+        floatingActionButton = {
+            if (state !is DiaryScreenState.Loading) {
+                FloatingActionButton(onClick = { viewModel.insertNote() }) {
+                    Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
+                }
+            }
+        }
+    ) { innerPadding ->
         when (state) {
             is DiaryScreenState.Content -> {
                 DiaryContent(
                     notesList = (state as DiaryScreenState.Content).content,
-                    modifier = Modifier.padding(innerPadding),
                     onNoteEditClick = { note ->
-
+                        // TODO: handle edit
                     },
                     onNoteDeleteClick = { note ->
                         viewModel.deleteNote(note)
-                    },
-                    onFabClick = {
-                        viewModel.insertNote()
                     }
                 )
             }
 
             DiaryScreenState.Empty -> {
-                DiaryEmpty(
-                    modifier = Modifier.padding(innerPadding),
-                    onFabClick = { viewModel.insertNote() })
+                DiaryEmpty(modifier = Modifier.padding(innerPadding))
             }
 
             DiaryScreenState.Loading -> {
@@ -49,5 +56,4 @@ fun DiaryScreen() {
         }
     }
 }
-
 
