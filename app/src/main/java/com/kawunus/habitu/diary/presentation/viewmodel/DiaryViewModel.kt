@@ -1,6 +1,5 @@
 package com.kawunus.habitu.diary.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kawunus.habitu.diary.domain.api.NoteInteractor
@@ -27,6 +26,14 @@ class DiaryViewModel(
         }
     }
 
+    private fun updateData() {
+        viewModelScope.launch {
+            noteInteractor.getAllNotes().collect { notesList ->
+                processResult(notesList)
+            }
+        }
+    }
+
     private fun renderState(state: DiaryScreenState) {
         _state.value = state
     }
@@ -36,21 +43,20 @@ class DiaryViewModel(
             renderState(DiaryScreenState.Empty)
         } else {
             renderState(DiaryScreenState.Content(notesList))
-            Log.d("DiaryViewModel", "$notesList")
         }
     }
 
     fun deleteNote(note: Note) {
         viewModelScope.launch {
             noteInteractor.deleteNote(note)
-            getData()
+            updateData()
         }
     }
 
     fun insertNote(note: Note = Note(title = "test", content = "test", date = Random.nextLong())) {
         viewModelScope.launch {
             noteInteractor.insertNote(note)
-            getData()
+            updateData()
         }
     }
 }

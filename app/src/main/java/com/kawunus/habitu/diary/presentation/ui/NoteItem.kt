@@ -35,7 +35,7 @@ import com.kawunus.habitu.utils.formatDate
 
 @Composable
 internal fun NoteItem(
-    note: Note, onEditClick: () -> Unit, onDeleteClick: () -> Unit
+    note: Note, onEditClick: () -> Unit, onDeleteClick: () -> Unit, modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -46,7 +46,7 @@ internal fun NoteItem(
     )
 
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
         shape = RoundedCornerShape(16.dp),

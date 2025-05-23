@@ -4,7 +4,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,23 +22,22 @@ internal fun DiaryContent(
     modifier: Modifier = Modifier
 ) {
     Scaffold(
-        modifier = modifier,
-        floatingActionButton = {
+        modifier = modifier, floatingActionButton = {
             FloatingActionButton(onClick = onFabClick) {
-
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
             }
-        }
-    ) { innerPadding ->
+        }) { innerPadding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            itemsIndexed(notesList) { _, note ->
+            itemsIndexed(notesList, key = { _, note -> note.id }) { _, note ->
                 NoteItem(
                     note = note,
                     onEditClick = { onNoteEditClick(note) },
-                    onDeleteClick = { onNoteDeleteClick(note) }
+                    onDeleteClick = { onNoteDeleteClick(note) },
+                    modifier = Modifier.animateItem()
                 )
             }
         }

@@ -1,6 +1,5 @@
 package com.kawunus.habitu.diary.presentation.ui
 
-import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -31,7 +30,6 @@ fun DiaryScreen() {
                     },
                     onNoteDeleteClick = { note ->
                         viewModel.deleteNote(note)
-                        Log.d("DiaryViewModel", "Удаляем заметку с id: ${note.id}")
                     },
                     onFabClick = {
                         viewModel.insertNote()
