@@ -10,13 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.navigation.NavController
 import com.kawunus.habitu.notes.presentation.viewmodel.DiaryScreenState
 import com.kawunus.habitu.notes.presentation.viewmodel.DiaryViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-fun DiaryScreen() {
+fun DiaryScreen(navController: NavController) {
     val viewModel: DiaryViewModel = koinViewModel()
     val state by viewModel.state.collectAsState()
 
@@ -27,7 +28,7 @@ fun DiaryScreen() {
     Scaffold(
         floatingActionButton = {
             if (state !is DiaryScreenState.Loading) {
-                FloatingActionButton(onClick = { viewModel.insertNote() }) {
+                FloatingActionButton(onClick = { navController.navigate("newNote") }) {
                     Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
                 }
             }

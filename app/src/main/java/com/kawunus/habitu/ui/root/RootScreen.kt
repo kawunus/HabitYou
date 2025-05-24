@@ -22,6 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.kawunus.habitu.newnote.presentation.NewNoteScreen
 import com.kawunus.habitu.notes.presentation.ui.DiaryScreen
 import org.koin.compose.koinInject
 
@@ -37,6 +38,10 @@ fun RootScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
+    // Список экранов, где нужно скрывать AppBar и BottomBar
+    val hideBarsRoutes = listOf("newNote")
+    val shouldShowBars = currentRoute !in hideBarsRoutes
+
     LaunchedEffect(currentRoute) {
         when (currentRoute) {
             BottomNavItem.Diary.route -> toolbarViewModel.setTitle("Личный дневник")
@@ -46,22 +51,35 @@ fun RootScreen() {
         }
     }
 
-    Scaffold(bottomBar = {
-        BottomNavigationBar(navController = navController)
-    }, topBar = {
-        TopAppBar(title = { Text(text = title) }, actions = {
-            IconButton(onClick = {}) {
-                Icon(imageVector = Icons.Default.Settings, contentDescription = "Настройки")
+    Scaffold(
+        bottomBar = {
+            if (shouldShowBars) {
+                BottomNavigationBar(navController = navController)
             }
-        })
-    }) { innerPadding ->
+        },
+        topBar = {
+            if (shouldShowBars) {
+                TopAppBar(
+                    title = { Text(text = title) },
+                    actions = {
+                        IconButton(onClick = {}) {
+                            Icon(
+                                imageVector = Icons.Default.Settings,
+                                contentDescription = "Настройки"
+                            )
+                        }
+                    }
+                )
+            }
+        }
+    ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = BottomNavItem.BadHabits.route,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(BottomNavItem.Diary.route) {
-                DiaryScreen()
+                DiaryScreen(navController = navController)
             }
             composable(BottomNavItem.BadHabits.route) {
                 BadHabitsScreen()
@@ -69,9 +87,13 @@ fun RootScreen() {
             composable(BottomNavItem.UsefulHabits.route) {
                 UsefulHabitsScreen()
             }
+            composable("newNote") {
+                NewNoteScreen(navController = navController)
+            }
         }
     }
 }
+
 
 @Composable
 fun BadHabitsScreen() {

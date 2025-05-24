@@ -23,13 +23,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.kawunus.habitu.notes.data.dto.NoteDto
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewNoteScreen(
-    onSave: (NoteDto) -> Unit,
-    onCancel: () -> Unit
+    navController: NavController,
 ) {
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
@@ -39,7 +39,7 @@ fun NewNoteScreen(
             TopAppBar(
                 title = { Text("Новая запись") },
                 navigationIcon = {
-                    IconButton(onClick = onCancel) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Отмена")
                     }
                 },
@@ -47,13 +47,7 @@ fun NewNoteScreen(
                     TextButton(
                         onClick = {
                             if (title.isNotBlank() && content.isNotBlank()) {
-                                onSave(
-                                    NoteDto(
-                                        title = title,
-                                        content = content,
-                                        date = System.currentTimeMillis()
-                                    )
-                                )
+
                             }
                         }
                     ) {
@@ -93,7 +87,6 @@ fun NewNoteScreen(
 @Preview
 fun NewNoteScreenPreview() {
     NewNoteScreen(
-        onSave = {},
-        onCancel = {}
+        navController = rememberNavController()
     )
 }
