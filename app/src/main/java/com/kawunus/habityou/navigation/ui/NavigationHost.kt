@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.kawunus.habityou.navigation.model.BottomNavItem
-import com.kawunus.habityou.newnote.presentation.NewNoteScreen
+import com.kawunus.habityou.newnote.presentation.ui.NewNoteScreen
 import com.kawunus.habityou.notes.presentation.ui.DiaryScreen
 import com.kawunus.habityou.ui.root.BadHabitsScreen
 import com.kawunus.habityou.ui.root.UsefulHabitsScreen

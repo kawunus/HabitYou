@@ -1,4 +1,4 @@
-package com.kawunus.habityou.newnote.presentation
+package com.kawunus.habityou.newnote.presentation.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,6 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.kawunus.habityou.R
+import com.kawunus.habityou.newnote.presentation.viewmodel.NewNoteState
+import com.kawunus.habityou.newnote.presentation.viewmodel.NewNoteViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,6 +38,20 @@ fun NewNoteScreen(
 ) {
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
+
+    val viewModel = koinViewModel<NewNoteViewModel>()
+
+    val state by viewModel.state.collectAsState()
+
+    when (state) {
+        is NewNoteState.Done -> {
+            navController.popBackStack()
+        }
+
+        NewNoteState.ReadyToCreate -> {
+
+        }
+    }
 
     Column {
         TopAppBar(
@@ -50,7 +68,7 @@ fun NewNoteScreen(
                 TextButton(
                     onClick = {
                         if (title.isNotBlank() && content.isNotBlank()) {
-                            // TODO: handle save
+                            viewModel.createNote(title, content)
                         }
                     }) {
                     Text(text = stringResource(R.string.new_note_save))
