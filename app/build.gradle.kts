@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.kawunus.habitu"
+    namespace = "com.kawunus.habityou"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.kawunus.habitu"
+        applicationId = "com.kawunus.habityou"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
