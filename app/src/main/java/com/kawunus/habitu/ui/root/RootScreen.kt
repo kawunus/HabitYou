@@ -38,12 +38,8 @@ fun RootScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    val mainBarRoutes = listOf(
-        NavigationConstants.DIARY_ROUTE,
-        NavigationConstants.BAD_HABITS_ROUTE,
-        NavigationConstants.USEFUL_HABITS_ROUTE
-    )
-    val shouldShowBars = currentRoute in mainBarRoutes
+    val hideBarsRoutes = listOf(NavigationConstants.NEW_NOTE_ROUTE)
+    val shouldShowBars = currentRoute !in hideBarsRoutes
 
     LaunchedEffect(currentRoute) {
         when (currentRoute) {
