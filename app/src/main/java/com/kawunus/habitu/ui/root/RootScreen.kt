@@ -1,6 +1,7 @@
 package com.kawunus.habitu.ui.root
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -17,7 +18,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.kawunus.habitu.navigation.model.BottomNavItem
@@ -26,20 +26,21 @@ import com.kawunus.habitu.navigation.ui.BottomNavigationBar
 import com.kawunus.habitu.navigation.ui.NavigationHost
 import org.koin.compose.koinInject
 
-@ExperimentalMaterial3Api
-@Preview
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RootScreen() {
     val navController = rememberNavController()
     val toolbarViewModel: ToolbarViewModel = koinInject()
-
     val title by toolbarViewModel.title.collectAsState()
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    val hideBarsRoutes = listOf(NavigationConstants.NEW_NOTE_ROUTE)
-    val shouldShowBars = currentRoute !in hideBarsRoutes
+    val hideTopBarRoutes = listOf(NavigationConstants.NEW_NOTE_ROUTE)
+    val hideBottomBarRoutes = listOf(NavigationConstants.NEW_NOTE_ROUTE)
+
+    val showTopBar = currentRoute !in hideTopBarRoutes
+    val showBottomBar = currentRoute !in hideBottomBarRoutes
 
     LaunchedEffect(currentRoute) {
         when (currentRoute) {
@@ -50,28 +51,19 @@ fun RootScreen() {
         }
     }
 
-    Scaffold(
-        bottomBar = {
-            if (shouldShowBars) {
-                BottomNavigationBar(navController = navController)
-            }
-        },
-        topBar = {
-            if (shouldShowBars) {
-                TopAppBar(
-                    title = { Text(text = title) },
-                    actions = {
-                        IconButton(onClick = {}) {
-                            Icon(
-                                imageVector = Icons.Default.Settings,
-                                contentDescription = "Настройки"
-                            )
-                        }
-                    }
-                )
-            }
+    Scaffold(contentWindowInsets = WindowInsets(0), topBar = {
+        if (showTopBar) {
+            TopAppBar(title = { Text(text = title) }, actions = {
+                IconButton(onClick = {}) {
+                    Icon(Icons.Default.Settings, contentDescription = "Настройки")
+                }
+            })
         }
-    ) { innerPadding ->
+    }, bottomBar = {
+        if (showBottomBar) {
+            BottomNavigationBar(navController = navController)
+        }
+    }) { innerPadding ->
         NavigationHost(
             navController = navController,
             startDestination = BottomNavItem.BadHabits.route,
