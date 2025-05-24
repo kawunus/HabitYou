@@ -38,9 +38,12 @@ fun RootScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    // Список экранов, где нужно скрывать AppBar и BottomBar
-    val hideBarsRoutes = listOf("newNote")
-    val shouldShowBars = currentRoute !in hideBarsRoutes
+    val mainBarRoutes = listOf(
+        NavigationConstants.DIARY_ROUTE,
+        NavigationConstants.BAD_HABITS_ROUTE,
+        NavigationConstants.USEFUL_HABITS_ROUTE
+    )
+    val shouldShowBars = currentRoute in mainBarRoutes
 
     LaunchedEffect(currentRoute) {
         when (currentRoute) {
