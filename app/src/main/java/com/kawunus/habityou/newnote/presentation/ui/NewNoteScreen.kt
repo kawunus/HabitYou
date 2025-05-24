@@ -22,10 +22,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.kawunus.habityou.R
 import com.kawunus.habityou.newnote.presentation.viewmodel.NewNoteState
 import com.kawunus.habityou.newnote.presentation.viewmodel.NewNoteViewModel
@@ -97,12 +95,4 @@ fun NewNoteScreen(
             maxLines = 10
         )
     }
-}
-
-@Composable
-@Preview
-fun NewNoteScreenPreview() {
-    NewNoteScreen(
-        navController = rememberNavController()
-    )
 }

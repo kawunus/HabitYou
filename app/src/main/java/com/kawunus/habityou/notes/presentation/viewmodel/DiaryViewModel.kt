@@ -2,15 +2,14 @@ package com.kawunus.habityou.notes.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kawunus.habityou.notes.domain.api.NoteInteractor
+import com.kawunus.habityou.notes.domain.api.DiaryInteractor
 import com.kawunus.habityou.notes.domain.model.Note
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 
 class DiaryViewModel(
-    private val noteInteractor: NoteInteractor
+    private val diaryInteractor: DiaryInteractor
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<DiaryScreenState>(DiaryScreenState.Loading)
@@ -20,7 +19,7 @@ class DiaryViewModel(
         renderState(DiaryScreenState.Loading)
 
         viewModelScope.launch {
-            noteInteractor.getAllNotes().collect { notesList ->
+            diaryInteractor.getAllNotes().collect { notesList ->
                 processResult(notesList)
             }
         }
@@ -28,7 +27,7 @@ class DiaryViewModel(
 
     private fun updateData() {
         viewModelScope.launch {
-            noteInteractor.getAllNotes().collect { notesList ->
+            diaryInteractor.getAllNotes().collect { notesList ->
                 processResult(notesList)
             }
         }
@@ -48,14 +47,7 @@ class DiaryViewModel(
 
     fun deleteNote(note: Note) {
         viewModelScope.launch {
-            noteInteractor.deleteNote(note)
-            updateData()
-        }
-    }
-
-    fun insertNote(note: Note = Note(title = "test", content = "test", date = Random.nextLong())) {
-        viewModelScope.launch {
-            noteInteractor.insertNote(note)
+            diaryInteractor.deleteNote(note)
             updateData()
         }
     }

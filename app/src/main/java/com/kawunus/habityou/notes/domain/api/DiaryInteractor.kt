@@ -3,13 +3,9 @@ package com.kawunus.habityou.notes.domain.api
 import com.kawunus.habityou.notes.domain.model.Note
 import kotlinx.coroutines.flow.Flow
 
-interface NoteInteractor {
-
-    suspend fun insertNote(note: Note)
+interface DiaryInteractor {
 
     suspend fun deleteNote(note: Note)
-
-    suspend fun updateNote(note: Note)
 
     suspend fun getAllNotes(): Flow<List<Note>>
 }
