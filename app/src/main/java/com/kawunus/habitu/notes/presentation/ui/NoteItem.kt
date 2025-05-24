@@ -29,7 +29,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.kawunus.habitu.R
 import com.kawunus.habitu.notes.domain.model.Note
 import com.kawunus.habitu.utils.formatDate
 
@@ -81,7 +83,9 @@ internal fun NoteItem(
                 IconButton(onClick = { expanded = !expanded }) {
                     Icon(
                         imageVector = Icons.Default.ExpandMore,
-                        contentDescription = if (expanded) "Свернуть" else "Развернуть",
+                        contentDescription = if (expanded) stringResource(R.string.collapse_icon_description) else stringResource(
+                            R.string.expand_icon_description
+                        ),
                         modifier = Modifier.rotate(rotationAngle)
                     )
                 }
@@ -100,12 +104,14 @@ internal fun NoteItem(
                 ) {
                     IconButton(onClick = onEditClick) {
                         Icon(
-                            imageVector = Icons.Default.Edit, contentDescription = "Редактировать"
+                            imageVector = Icons.Default.Edit,
+                            contentDescription = stringResource(R.string.edit_icon_description)
                         )
                     }
                     IconButton(onClick = onDeleteClick) {
                         Icon(
-                            imageVector = Icons.Default.Delete, contentDescription = "Удалить"
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = stringResource(R.string.delete_icon_description)
                         )
                     }
                 }

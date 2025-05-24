@@ -18,8 +18,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.kawunus.habitu.R
 import com.kawunus.habitu.navigation.model.BottomNavItem
 import com.kawunus.habitu.navigation.model.NavigationConstants
 import com.kawunus.habitu.navigation.ui.BottomNavigationBar
@@ -31,7 +33,7 @@ import org.koin.compose.koinInject
 fun RootScreen() {
     val navController = rememberNavController()
     val toolbarViewModel: ToolbarViewModel = koinInject()
-    val title by toolbarViewModel.title.collectAsState()
+    val title by toolbarViewModel.titleStringRes.collectAsState()
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -44,18 +46,20 @@ fun RootScreen() {
 
     LaunchedEffect(currentRoute) {
         when (currentRoute) {
-            NavigationConstants.DIARY_ROUTE -> toolbarViewModel.setTitle("Личный дневник")
-            NavigationConstants.BAD_HABITS_ROUTE -> toolbarViewModel.setTitle("Вредные привычки")
-            NavigationConstants.USEFUL_HABITS_ROUTE -> toolbarViewModel.setTitle("Полезные привычки")
-            else -> toolbarViewModel.setTitle("Habitu")
+            NavigationConstants.DIARY_ROUTE -> toolbarViewModel.setTitleStringRes(R.string.diary)
+            NavigationConstants.BAD_HABITS_ROUTE -> toolbarViewModel.setTitleStringRes(R.string.bad_habits)
+            NavigationConstants.USEFUL_HABITS_ROUTE -> toolbarViewModel.setTitleStringRes(R.string.useful_habits)
         }
     }
 
     Scaffold(contentWindowInsets = WindowInsets(0), topBar = {
         if (showTopBar) {
-            TopAppBar(title = { Text(text = title) }, actions = {
+            TopAppBar(title = { Text(text = stringResource(title)) }, actions = {
                 IconButton(onClick = {}) {
-                    Icon(Icons.Default.Settings, contentDescription = "Настройки")
+                    Icon(
+                        Icons.Default.Settings,
+                        contentDescription = stringResource(R.string.settings_icon_description)
+                    )
                 }
             })
         }
@@ -76,13 +80,13 @@ fun RootScreen() {
 @Composable
 fun BadHabitsScreen() {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Вредные привычки")
+        Text(stringResource(R.string.bad_habits))
     }
 }
 
 @Composable
 fun UsefulHabitsScreen() {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("Полезные привычки")
+        Text(stringResource(R.string.useful_habits))
     }
 }

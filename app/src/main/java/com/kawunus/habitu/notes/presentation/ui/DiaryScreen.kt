@@ -11,6 +11,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
+import com.kawunus.habitu.navigation.model.NavigationConstants
 import com.kawunus.habitu.notes.presentation.viewmodel.DiaryScreenState
 import com.kawunus.habitu.notes.presentation.viewmodel.DiaryViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -28,7 +29,7 @@ fun DiaryScreen(navController: NavController) {
     Scaffold(
         floatingActionButton = {
             if (state !is DiaryScreenState.Loading) {
-                FloatingActionButton(onClick = { navController.navigate("newNote") }) {
+                FloatingActionButton(onClick = { navController.navigate(NavigationConstants.NEW_NOTE_ROUTE) }) {
                     Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
                 }
             }

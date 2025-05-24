@@ -6,6 +6,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.kawunus.habitu.R
 
 @Composable
 internal fun DiaryEmpty(modifier: Modifier = Modifier) {
@@ -13,7 +15,7 @@ internal fun DiaryEmpty(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Нет записей")
+        Text(text = stringResource(R.string.diary_empty))
     }
 }
 
