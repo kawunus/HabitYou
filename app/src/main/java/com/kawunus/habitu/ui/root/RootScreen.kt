@@ -18,12 +18,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.kawunus.habitu.newnote.presentation.NewNoteScreen
-import com.kawunus.habitu.notes.presentation.ui.DiaryScreen
+import com.kawunus.habitu.navigation.model.BottomNavItem
+import com.kawunus.habitu.navigation.model.NavigationConstants
+import com.kawunus.habitu.navigation.ui.BottomNavigationBar
+import com.kawunus.habitu.navigation.ui.NavigationHost
 import org.koin.compose.koinInject
 
 @ExperimentalMaterial3Api
@@ -44,9 +44,9 @@ fun RootScreen() {
 
     LaunchedEffect(currentRoute) {
         when (currentRoute) {
-            BottomNavItem.Diary.route -> toolbarViewModel.setTitle("Личный дневник")
-            BottomNavItem.BadHabits.route -> toolbarViewModel.setTitle("Вредные привычки")
-            BottomNavItem.UsefulHabits.route -> toolbarViewModel.setTitle("Полезные привычки")
+            NavigationConstants.DIARY_ROUTE -> toolbarViewModel.setTitle("Личный дневник")
+            NavigationConstants.BAD_HABITS_ROUTE -> toolbarViewModel.setTitle("Вредные привычки")
+            NavigationConstants.USEFUL_HABITS_ROUTE -> toolbarViewModel.setTitle("Полезные привычки")
             else -> toolbarViewModel.setTitle("Habitu")
         }
     }
@@ -73,24 +73,11 @@ fun RootScreen() {
             }
         }
     ) { innerPadding ->
-        NavHost(
+        NavigationHost(
             navController = navController,
             startDestination = BottomNavItem.BadHabits.route,
             modifier = Modifier.padding(innerPadding)
-        ) {
-            composable(BottomNavItem.Diary.route) {
-                DiaryScreen(navController = navController)
-            }
-            composable(BottomNavItem.BadHabits.route) {
-                BadHabitsScreen()
-            }
-            composable(BottomNavItem.UsefulHabits.route) {
-                UsefulHabitsScreen()
-            }
-            composable("newNote") {
-                NewNoteScreen(navController = navController)
-            }
-        }
+        )
     }
 }
 

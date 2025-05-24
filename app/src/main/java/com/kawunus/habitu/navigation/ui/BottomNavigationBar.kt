@@ -1,4 +1,4 @@
-package com.kawunus.habitu.ui.root
+package com.kawunus.habitu.navigation.ui
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -9,6 +9,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.kawunus.habitu.navigation.model.BottomNavItem
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
