@@ -1,5 +1,6 @@
 package com.kawunus.habityou.di
 
+import com.kawunus.habityou.editnote.presentation.viewmodel.EditNoteViewModel
 import com.kawunus.habityou.newnote.presentation.viewmodel.NewNoteViewModel
 import com.kawunus.habityou.notes.presentation.viewmodel.DiaryViewModel
 import com.kawunus.habityou.ui.root.ToolbarViewModel
@@ -13,4 +14,6 @@ val viewModelModule = module {
     viewModelOf(::ToolbarViewModel)
 
     viewModelOf(::NewNoteViewModel)
+
+    viewModelOf(::EditNoteViewModel)
 }

@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class NewNoteViewModel(private val newNoteUseCase: NewNoteUseCase) : ViewModel() {
 
-    private val _state = MutableStateFlow<NewNoteState>(NewNoteState.ReadyToCreate)
+    private val _state = MutableStateFlow<NewNoteScreenState>(NewNoteScreenState.ReadyToCreate)
     val state = _state.asStateFlow()
 
     fun createNote(title: String, content: String) {
@@ -22,7 +22,7 @@ class NewNoteViewModel(private val newNoteUseCase: NewNoteUseCase) : ViewModel()
                     date = System.currentTimeMillis()
                 )
             )
-            _state.value = NewNoteState.Done
+            _state.value = NewNoteScreenState.Done
         }
     }
 }

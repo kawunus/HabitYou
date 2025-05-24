@@ -25,7 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.kawunus.habityou.R
-import com.kawunus.habityou.newnote.presentation.viewmodel.NewNoteState
+import com.kawunus.habityou.newnote.presentation.viewmodel.NewNoteScreenState
 import com.kawunus.habityou.newnote.presentation.viewmodel.NewNoteViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -42,11 +42,11 @@ fun NewNoteScreen(
     val state by viewModel.state.collectAsState()
 
     when (state) {
-        is NewNoteState.Done -> {
+        is NewNoteScreenState.Done -> {
             navController.popBackStack()
         }
 
-        NewNoteState.ReadyToCreate -> {
+        NewNoteScreenState.ReadyToCreate -> {
 
         }
     }
