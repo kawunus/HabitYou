@@ -24,7 +24,7 @@ class EditNoteViewModel(private val editNoteInteractor: EditNoteInteractor) : Vi
     fun deleteNote(note: Note) {
         viewModelScope.launch {
             editNoteInteractor.deleteNote(note)
-            _state.value = EditNoteScreenState.Edited
+            _state.value = EditNoteScreenState.Deleted
         }
     }
 
