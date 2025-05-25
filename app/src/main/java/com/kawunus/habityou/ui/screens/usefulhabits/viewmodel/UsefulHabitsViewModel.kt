@@ -8,13 +8,14 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class UsefulHabitsViewModel(
-    private val newEntryUseCase: NewEntryUseCase
+    private val newEntry: NewEntryUseCase,
+
 ) : ViewModel() {
 
 
     fun toggleEntry(habitId: Int, date: LocalDate) {
         viewModelScope.launch {
-            newEntryUseCase.invoke(Entry(habitId = habitId, date = date))
+            newEntry(Entry(habitId = habitId, date = date))
         }
     }
 }
