@@ -2,13 +2,13 @@ package com.kawunus.habityou.data.impl
 
 import com.kawunus.habityou.data.database.dao.UsefulHabitDao
 import com.kawunus.habityou.data.dto.UsefulHabitDto
-import com.kawunus.habityou.domain.api.repository.UsefulHabitsRepository
+import com.kawunus.habityou.domain.api.repository.UsefulHabitRepository
 import com.kawunus.habityou.utils.mappers.toUsefulHabitDto
 import com.kawunus.habityou.utils.mappers.toUsefulHabitEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class UsefulHabitRepositoryImpl(private val habitDao: UsefulHabitDao) : UsefulHabitsRepository {
+class UsefulHabitRepositoryImpl(private val habitDao: UsefulHabitDao) : UsefulHabitRepository {
     override suspend fun getAllUsefulHabits(): Flow<List<UsefulHabitDto>> = flow {
         emit(habitDao.getAllUsefulHabits().map { it.toUsefulHabitDto() })
     }

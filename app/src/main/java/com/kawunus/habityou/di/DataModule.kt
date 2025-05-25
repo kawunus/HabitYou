@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.kawunus.habityou.data.database.AppDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
+import java.time.Clock
 
 val dataModule = module {
 
@@ -25,4 +26,6 @@ val dataModule = module {
     single { get<AppDatabase>().usefulHabitWithEntriesDao() }
 
     single { get<AppDatabase>().entryDao() }
+
+    single { Clock.systemDefaultZone() }
 }
