@@ -15,6 +15,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.kawunus.habityou.R
 
+
+/**
+ * A composable function that displays a confirmation dialog for deleting an item.
+ *
+ * @param modifier A [Modifier] for customizing the layout or behavior of the dialog.
+ * @param titleResId A string resource ID for the dialog's title, typically describing the item to be deleted.
+ * @param onDismiss A callback invoked when the dialog is dismissed without confirming the action.
+ * @param onConfirm A callback invoked when the delete action is confirmed.
+ *
+ * This dialog is typically used to confirm irreversible delete actions, with options to cancel or proceed.
+ */
 @Composable
 fun DeleteDialog(
     modifier: Modifier = Modifier,
