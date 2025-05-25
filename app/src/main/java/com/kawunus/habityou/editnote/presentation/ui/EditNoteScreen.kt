@@ -46,7 +46,7 @@ fun EditNoteScreen(
         ?.savedStateHandle
         ?.get<Note>("note")
 
-    var openDeleteDialog by remember { mutableStateOf(false) }
+    var deleteDialogOpen by remember { mutableStateOf(false) }
 
     when (state) {
         EditNoteScreenState.Edited -> {
@@ -92,7 +92,7 @@ fun EditNoteScreen(
                     Text(text = stringResource(R.string.new_note_save))
                 }
                 IconButton(onClick = {
-                    openDeleteDialog = true
+                    deleteDialogOpen = true
                 }) {
                     Icon(
                         Icons.Filled.Delete,
@@ -124,14 +124,14 @@ fun EditNoteScreen(
         )
     }
 
-    if (openDeleteDialog) {
+    if (deleteDialogOpen) {
         DeleteDialog(
             titleResId = R.string.dialog_delete_title_note,
             onConfirm = {
                 viewModel.deleteNote(note ?: return@DeleteDialog)
-                openDeleteDialog = false
+                deleteDialogOpen = false
             },
-            onDismiss = { openDeleteDialog = false }
+            onDismiss = { deleteDialogOpen = false }
         )
     }
 }
