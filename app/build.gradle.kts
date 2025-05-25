@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation("androidx.compose.material3:material3:1.3.2")
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.34.0")
+
 
 
     // Room Database
