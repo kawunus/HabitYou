@@ -10,10 +10,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
+import com.kawunus.habityou.R
 import com.kawunus.habityou.navigation.model.NavigationConstants
+import com.kawunus.habityou.notes.domain.model.Note
 import com.kawunus.habityou.notes.presentation.viewmodel.DiaryScreenState
 import com.kawunus.habityou.notes.presentation.viewmodel.DiaryViewModel
+import com.kawunus.habityou.ui.dialog.delete.DeleteDialog
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -21,6 +27,9 @@ import org.koin.androidx.compose.koinViewModel
 fun DiaryScreen(navController: NavController) {
     val viewModel: DiaryViewModel = koinViewModel()
     val state by viewModel.state.collectAsState()
+
+    var deleteDialogOpen by remember { mutableStateOf(false) }
+    var currentNote by remember { mutableStateOf<Note?>(null) }
 
     LaunchedEffect(viewModel) {
         viewModel.getData()
@@ -43,8 +52,24 @@ fun DiaryScreen(navController: NavController) {
                         navController.navigate(NavigationConstants.EDIT_NOTE_ROUTE)
                     },
                     onNoteDeleteClick = { note ->
-                        viewModel.deleteNote(note)
+                        deleteDialogOpen = true
+                        currentNote = note
                     })
+
+                if (deleteDialogOpen) {
+                    DeleteDialog(
+                        titleResId = R.string.dialog_delete_title_note,
+                        onDismiss = {
+                            deleteDialogOpen = false
+                            currentNote = null
+                        },
+                        onConfirm = {
+                            deleteDialogOpen = false
+                            viewModel.deleteNote(currentNote ?: return@DeleteDialog)
+                            currentNote = null
+                        }
+                    )
+                }
             }
 
             DiaryScreenState.Empty -> {

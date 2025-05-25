@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -28,6 +29,7 @@ import com.kawunus.habityou.R
 import com.kawunus.habityou.editnote.presentation.viewmodel.EditNoteScreenState
 import com.kawunus.habityou.editnote.presentation.viewmodel.EditNoteViewModel
 import com.kawunus.habityou.notes.domain.model.Note
+import com.kawunus.habityou.ui.dialog.delete.DeleteDialog
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,13 +46,19 @@ fun EditNoteScreen(
         ?.savedStateHandle
         ?.get<Note>("note")
 
+    var deleteDialogOpen by remember { mutableStateOf(false) }
+
     when (state) {
-        is EditNoteScreenState.Done -> {
+        EditNoteScreenState.Edited -> {
             navController.popBackStack()
         }
 
         EditNoteScreenState.ReadyToEdit -> {
 
+        }
+
+        EditNoteScreenState.Deleted -> {
+            navController.popBackStack()
         }
     }
 
@@ -83,6 +91,14 @@ fun EditNoteScreen(
                     }) {
                     Text(text = stringResource(R.string.new_note_save))
                 }
+                IconButton(onClick = {
+                    deleteDialogOpen = true
+                }) {
+                    Icon(
+                        Icons.Filled.Delete,
+                        contentDescription = stringResource(R.string.delete_icon_description)
+                    )
+                }
             })
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
@@ -105,6 +121,17 @@ fun EditNoteScreen(
                 .padding(horizontal = 16.dp)
                 .padding(bottom = 16.dp),
             maxLines = 10
+        )
+    }
+
+    if (deleteDialogOpen) {
+        DeleteDialog(
+            titleResId = R.string.dialog_delete_title_note,
+            onConfirm = {
+                viewModel.deleteNote(note ?: return@DeleteDialog)
+                deleteDialogOpen = false
+            },
+            onDismiss = { deleteDialogOpen = false }
         )
     }
 }
