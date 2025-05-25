@@ -2,7 +2,7 @@ package com.kawunus.habityou.ui.newnote.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kawunus.habityou.domain.api.NewNoteUseCase
+import com.kawunus.habityou.domain.api.usecase.NewNoteUseCase
 import com.kawunus.habityou.domain.model.Note
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

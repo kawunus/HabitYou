@@ -1,4 +1,4 @@
-package com.kawunus.habityou.domain.api
+package com.kawunus.habityou.domain.api.usecase
 
 import com.kawunus.habityou.domain.model.Note
 

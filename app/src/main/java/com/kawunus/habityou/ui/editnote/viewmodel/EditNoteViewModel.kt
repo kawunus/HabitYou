@@ -2,7 +2,7 @@ package com.kawunus.habityou.ui.editnote.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kawunus.habityou.domain.api.EditNoteInteractor
+import com.kawunus.habityou.domain.api.usecase.EditNoteInteractor
 import com.kawunus.habityou.domain.model.Note
 import com.kawunus.habityou.ui.editnote.viewmodel.EditNoteScreenState.ReadyToEdit
 import kotlinx.coroutines.flow.MutableStateFlow

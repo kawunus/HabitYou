@@ -2,7 +2,7 @@ package com.kawunus.habityou.data.impl
 
 import com.kawunus.habityou.data.database.dao.EntryDao
 import com.kawunus.habityou.data.dto.EntryDto
-import com.kawunus.habityou.domain.api.EntryRepository
+import com.kawunus.habityou.domain.api.repository.EntryRepository
 import com.kawunus.habityou.utils.mappers.toEntryDto
 import com.kawunus.habityou.utils.mappers.toEntryEntity
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.kawunus.habityou.domain.api
+package com.kawunus.habityou.domain.api.repository
 
 import com.kawunus.habityou.data.dto.UsefulHabitDto
 import kotlinx.coroutines.flow.Flow

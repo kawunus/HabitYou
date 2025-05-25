@@ -1,7 +1,7 @@
 package com.kawunus.habityou.domain.usecase
 
-import com.kawunus.habityou.domain.api.EditNoteInteractor
-import com.kawunus.habityou.domain.api.NoteRepository
+import com.kawunus.habityou.domain.api.repository.NoteRepository
+import com.kawunus.habityou.domain.api.usecase.EditNoteInteractor
 import com.kawunus.habityou.domain.model.Note
 import com.kawunus.habityou.utils.mappers.toNoteDto
 

@@ -2,7 +2,7 @@ package com.kawunus.habityou.data.impl
 
 import com.kawunus.habityou.data.database.dao.NoteDao
 import com.kawunus.habityou.data.dto.NoteDto
-import com.kawunus.habityou.domain.api.NoteRepository
+import com.kawunus.habityou.domain.api.repository.NoteRepository
 import com.kawunus.habityou.utils.mappers.toNoteDto
 import com.kawunus.habityou.utils.mappers.toNoteEntity
 import kotlinx.coroutines.flow.Flow

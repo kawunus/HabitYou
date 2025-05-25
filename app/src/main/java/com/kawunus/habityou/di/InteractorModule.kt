@@ -1,8 +1,8 @@
 package com.kawunus.habityou.di
 
-import com.kawunus.habityou.domain.api.DiaryInteractor
-import com.kawunus.habityou.domain.api.EditNoteInteractor
-import com.kawunus.habityou.domain.api.NewNoteUseCase
+import com.kawunus.habityou.domain.api.usecase.DiaryInteractor
+import com.kawunus.habityou.domain.api.usecase.EditNoteInteractor
+import com.kawunus.habityou.domain.api.usecase.NewNoteUseCase
 import com.kawunus.habityou.domain.usecase.DiaryInteractorImpl
 import com.kawunus.habityou.domain.usecase.EditNoteInteractorImpl
 import com.kawunus.habityou.domain.usecase.NewNoteUseCaseImpl

@@ -3,7 +3,7 @@ package com.kawunus.habityou.data.database.entity
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class UsefulHabitWithEntries(
+data class UsefulHabitWithEntriesEntity(
     @Embedded val habit: UsefulHabitEntity,
     @Relation(
         parentColumn = "id",

@@ -12,12 +12,11 @@ import com.kawunus.habityou.data.database.entity.BadHabitEntity
 import com.kawunus.habityou.data.database.entity.EntryEntity
 import com.kawunus.habityou.data.database.entity.NoteEntity
 import com.kawunus.habityou.data.database.entity.UsefulHabitEntity
-import com.kawunus.habityou.data.database.entity.UsefulHabitWithEntries
 import com.kawunus.habityou.utils.converters.DatabaseConverter
 
 @Database(
     version = 1,
-    entities = [BadHabitEntity::class, NoteEntity::class, UsefulHabitEntity::class, UsefulHabitWithEntries::class, EntryEntity::class]
+    entities = [BadHabitEntity::class, NoteEntity::class, UsefulHabitEntity::class, EntryEntity::class]
 )
 @TypeConverters(DatabaseConverter::class)
 abstract class AppDatabase : RoomDatabase() {
