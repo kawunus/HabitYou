@@ -9,12 +9,12 @@ import com.kawunus.habityou.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class HabituApplication : Application() {
+class HabitYouApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            androidContext(this@HabituApplication)
+            androidContext(this@HabitYouApplication)
             modules(dataModule, repositoryModule, interactorModule, utilModule, viewModelModule)
         }
     }
