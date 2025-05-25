@@ -8,7 +8,7 @@ import com.kawunus.habityou.usefulhabits.domain.model.UsefulHabitFrequency
 data class UsefulHabitEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
-    val type: UsefulHabitFrequency,
+    val frequency: UsefulHabitFrequency,
     val streak: Int?,
     val score: Int?,
 )

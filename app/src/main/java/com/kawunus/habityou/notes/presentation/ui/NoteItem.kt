@@ -33,7 +33,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kawunus.habityou.R
 import com.kawunus.habityou.notes.domain.model.Note
-import com.kawunus.habityou.utils.formatDate
+import com.kawunus.habityou.utils.converters.formatDate
 
 @Composable
 internal fun NoteItem(

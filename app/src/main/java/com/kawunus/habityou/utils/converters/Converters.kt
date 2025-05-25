@@ -1,4 +1,4 @@
-package com.kawunus.habityou.utils
+package com.kawunus.habityou.utils.converters
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
