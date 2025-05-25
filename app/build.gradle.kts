@@ -3,14 +3,15 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
-    namespace = "com.kawunus.habitu"
+    namespace = "com.kawunus.habityou"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.kawunus.habitu"
+        applicationId = "com.kawunus.habityou"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -57,6 +58,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation("androidx.compose.material3:material3:1.3.2")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.34.0")
+
+
 
     // Room Database
     implementation(libs.androidx.room.runtime)
