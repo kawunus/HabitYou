@@ -1,6 +1,6 @@
 package com.kawunus.habityou.domain.usecase
 
-import com.kawunus.habityou.domain.api.usecase.CalculateStreakUseCase
+import com.kawunus.habityou.domain.api.usecase.CalculateStreaksUseCase
 import com.kawunus.habityou.domain.api.usecase.GetEntriesUseCase
 import com.kawunus.habityou.domain.model.Streak
 import kotlinx.coroutines.flow.Flow
@@ -9,7 +9,7 @@ import java.time.Clock
 import java.time.LocalDate
 
 /**
- * Implementation of [CalculateStreakUseCase] that calculates consecutive habit streaks
+ * Implementation of [CalculateStreaksUseCase] that calculates consecutive habit streaks
  * based on the dates of completed habit entries.
  *
  * A streak is defined as a sequence of at least two consecutive days with habit entries.
@@ -23,10 +23,10 @@ import java.time.LocalDate
  * @property getEntries Use case to retrieve the list of habit entries for a given habit.
  * @property clock Clock used for getting the current date (supports testing and custom time).
  */
-class CalculateStreakUseCaseImpl(
+class CalculateStreaksUseCaseImpl(
     private val getEntries: GetEntriesUseCase,
     private val clock: Clock
-) : CalculateStreakUseCase {
+) : CalculateStreaksUseCase {
 
     /**
      * Calculates all streaks of at least two consecutive days for the given habit.

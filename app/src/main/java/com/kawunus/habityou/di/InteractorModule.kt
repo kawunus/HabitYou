@@ -1,14 +1,14 @@
 package com.kawunus.habityou.di
 
 import com.kawunus.habityou.domain.api.usecase.CalculateScoreUseCase
-import com.kawunus.habityou.domain.api.usecase.CalculateStreakUseCase
+import com.kawunus.habityou.domain.api.usecase.CalculateStreaksUseCase
 import com.kawunus.habityou.domain.api.usecase.DiaryInteractor
 import com.kawunus.habityou.domain.api.usecase.EditNoteInteractor
 import com.kawunus.habityou.domain.api.usecase.GetEntriesUseCase
 import com.kawunus.habityou.domain.api.usecase.NewEntryUseCase
 import com.kawunus.habityou.domain.api.usecase.NewNoteUseCase
 import com.kawunus.habityou.domain.usecase.CalculateScoreUseCaseImpl
-import com.kawunus.habityou.domain.usecase.CalculateStreakUseCaseImpl
+import com.kawunus.habityou.domain.usecase.CalculateStreaksUseCaseImpl
 import com.kawunus.habityou.domain.usecase.DiaryInteractorImpl
 import com.kawunus.habityou.domain.usecase.EditNoteInteractorImpl
 import com.kawunus.habityou.domain.usecase.GetEntriesUseCaseImpl
@@ -30,7 +30,7 @@ val interactorModule = module {
 
     singleOf(::GetEntriesUseCaseImpl) { bind<GetEntriesUseCase>() }
 
-    singleOf(::CalculateStreakUseCaseImpl) { bind<CalculateStreakUseCase>() }
+    singleOf(::CalculateStreaksUseCaseImpl) { bind<CalculateStreaksUseCase>() }
 
     singleOf(::CalculateScoreUseCaseImpl) { bind<CalculateScoreUseCase>() }
 }
