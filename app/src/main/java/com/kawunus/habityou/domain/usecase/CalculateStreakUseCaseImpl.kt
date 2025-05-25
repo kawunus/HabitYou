@@ -20,11 +20,11 @@ import java.time.LocalDate
  * - Sorts the entries in ascending order (from oldest to newest).
  * - Groups entries into streaks of consecutive days.
  *
- * @property getEntriesUseCase Use case to retrieve the list of habit entries for a given habit.
+ * @property getEntries Use case to retrieve the list of habit entries for a given habit.
  * @property clock Clock used for getting the current date (supports testing and custom time).
  */
 class CalculateStreakUseCaseImpl(
-    private val getEntriesUseCase: GetEntriesUseCase,
+    private val getEntries: GetEntriesUseCase,
     private val clock: Clock
 ) : CalculateStreakUseCase {
 
@@ -44,7 +44,7 @@ class CalculateStreakUseCaseImpl(
      * ```
      */
     override suspend fun invoke(habitId: Int): Flow<List<Streak>> {
-        return getEntriesUseCase(habitId).map { list ->
+        return getEntries(habitId).map { list ->
             if (list.isEmpty()) return@map emptyList()
 
             val today = LocalDate.now(clock)
