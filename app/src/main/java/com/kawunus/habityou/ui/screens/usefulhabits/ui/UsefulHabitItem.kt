@@ -121,7 +121,7 @@ fun UsefulHabitCard(
                     val startOfWeek = todaysDate.with(DayOfWeek.MONDAY)
                     (0..6).forEach { offset ->
                         val date = startOfWeek.plusDays(offset.toLong())
-                        HomeHabitCardDay(
+                        UsefulHabitCardDay(
                             date = date,
                             completed = usefulHabit.completed.contains(date),
                             completedByWeek = usefulHabit.completedByWeek.contains(date),
@@ -159,7 +159,7 @@ fun UsefulHabitCard(
 }
 
 @Composable
-private fun HomeHabitCardDay(
+private fun UsefulHabitCardDay(
     modifier: Modifier = Modifier,
     onCheckedChange: (Boolean) -> Unit,
     completed: Boolean,
@@ -191,7 +191,7 @@ private fun HomeHabitCardDay(
 
 @Preview
 @Composable
-private fun HomeHabitCardPreview() {
+private fun UsefulHabitCardPreview() {
     UsefulHabitCard(
         usefulHabit = UsefulHabit(
             id = 1,
@@ -211,7 +211,7 @@ private fun HomeHabitCardPreview() {
 
 @Preview
 @Composable
-private fun HomeHabitCardExpandedPreview() {
+private fun UsefulHabitCardExpandedPreview() {
     UsefulHabitCard(
         usefulHabit = UsefulHabit(
             id = 1,

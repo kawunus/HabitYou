@@ -13,7 +13,7 @@ import com.kawunus.habityou.ui.screens.diary.ui.DiaryScreen
 import com.kawunus.habityou.ui.screens.editnote.ui.EditNoteScreen
 import com.kawunus.habityou.ui.screens.newnote.ui.NewNoteScreen
 import com.kawunus.habityou.ui.screens.root.ui.BadHabitsScreen
-import com.kawunus.habityou.ui.screens.root.ui.UsefulHabitsScreen
+import com.kawunus.habityou.ui.screens.usefulhabits.ui.UsefulHabitsScreen
 
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -33,7 +33,7 @@ fun NavigationHost(
             BadHabitsScreen()
         }
         composable(BottomNavItem.UsefulHabits.route) {
-            UsefulHabitsScreen()
+            UsefulHabitsScreen(navController)
         }
         composable(NEW_NOTE_ROUTE, enterTransition = {
             materialEnterTransition()

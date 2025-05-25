@@ -22,8 +22,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.kawunus.habityou.R
-import com.kawunus.habityou.domain.model.UsefulHabit
-import com.kawunus.habityou.domain.model.UsefulHabitFrequency
 import com.kawunus.habityou.ui.common.navigation.model.BottomNavItem
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.EDIT_NOTE_ROUTE
@@ -31,9 +29,7 @@ import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_N
 import com.kawunus.habityou.ui.common.navigation.ui.BottomNavigationBar
 import com.kawunus.habityou.ui.common.navigation.ui.NavigationHost
 import com.kawunus.habityou.ui.screens.root.viewmodel.ToolbarViewModel
-import com.kawunus.habityou.ui.screens.usefulhabits.ui.UsefulHabitCard
 import org.koin.compose.koinInject
-import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -88,27 +84,5 @@ fun RootScreen() {
 fun BadHabitsScreen() {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Text(stringResource(R.string.bad_habits))
-    }
-}
-
-@Composable
-fun UsefulHabitsScreen() {
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        val sampleUsefulHabit = UsefulHabit(
-            id = 1,
-            name = "Drink Water",
-            type = UsefulHabitFrequency.DAILY,
-            streak = 5,
-            score = 80,
-            completed = listOf(LocalDate.now()),
-            completedByWeek = emptyList()
-        )
-
-        UsefulHabitCard(
-            usefulHabit = sampleUsefulHabit,
-            completedOnClick = { id, date -> println("Completed habit $id on $date") },
-            showStatistic = true,
-            todaysDate = LocalDate.now()
-        )
     }
 }

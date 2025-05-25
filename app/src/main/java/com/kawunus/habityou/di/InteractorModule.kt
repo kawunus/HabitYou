@@ -36,5 +36,5 @@ val interactorModule = module {
 
     singleOf(::CalculateScoreUseCaseImpl) { bind<CalculateScoreUseCase>() }
 
-    singleOf(::GetUsefulHabitsWithEntriesUseCaseImpl) { bind<GetUsefulHabitsWithEntriesUseCase>() })
+    singleOf(::GetUsefulHabitsWithEntriesUseCaseImpl) { bind<GetUsefulHabitsWithEntriesUseCase>() }
 }
