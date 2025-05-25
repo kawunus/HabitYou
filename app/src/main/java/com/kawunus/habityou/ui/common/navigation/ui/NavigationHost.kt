@@ -9,11 +9,11 @@ import androidx.navigation.compose.composable
 import com.kawunus.habityou.ui.common.navigation.model.BottomNavItem
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.EDIT_NOTE_ROUTE
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_NOTE_ROUTE
-import com.kawunus.habityou.ui.diary.ui.DiaryScreen
-import com.kawunus.habityou.ui.editnote.ui.EditNoteScreen
-import com.kawunus.habityou.ui.newnote.ui.NewNoteScreen
-import com.kawunus.habityou.ui.root.ui.BadHabitsScreen
-import com.kawunus.habityou.ui.root.ui.UsefulHabitsScreen
+import com.kawunus.habityou.ui.screens.diary.ui.DiaryScreen
+import com.kawunus.habityou.ui.screens.editnote.ui.EditNoteScreen
+import com.kawunus.habityou.ui.screens.newnote.ui.NewNoteScreen
+import com.kawunus.habityou.ui.screens.root.ui.BadHabitsScreen
+import com.kawunus.habityou.ui.screens.root.ui.UsefulHabitsScreen
 
 
 @OptIn(ExperimentalAnimationApi::class)
