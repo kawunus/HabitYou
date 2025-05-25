@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
 import com.kawunus.habityou.data.database.entity.EntryEntity
+import java.time.LocalDate
 
 @Dao
 interface EntryDao {
@@ -22,5 +23,7 @@ interface EntryDao {
     @Delete
     suspend fun deleteEntry(entryId: EntryEntity)
 
+    @Query("SELECT * FROM entries WHERE date = :date AND useful_habit_id = :habitId")
+    suspend fun getEntryForDate(habitId: Int, date: LocalDate): EntryEntity?
 
 }

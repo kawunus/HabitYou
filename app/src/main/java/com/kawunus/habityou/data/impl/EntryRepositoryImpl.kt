@@ -9,8 +9,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class EntryRepositoryImpl(private val entryDao: EntryDao) : EntryRepository {
-    override suspend fun insertEntry(entry: EntryDto) {
-        entryDao.insertEntry(entry.toEntryEntity())
+    override suspend fun toggleEntry(entry: EntryDto) {
+        val currentEntity = entryDao.getEntryForDate(entry.habitId, entry.date)
+        if (currentEntity == null) {
+            entryDao.insertEntry(entry.toEntryEntity())
+        } else {
+            entryDao.deleteEntry(currentEntity)
+        }
     }
 
     override suspend fun deleteEntry(entry: EntryDto) {

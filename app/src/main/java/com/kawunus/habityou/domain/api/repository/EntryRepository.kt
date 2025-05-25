@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface EntryRepository {
 
-    suspend fun insertEntry(entry: EntryDto)
+    suspend fun toggleEntry(entry: EntryDto)
 
     suspend fun deleteEntry(entry: EntryDto)
 
