@@ -1,8 +1,8 @@
 package com.kawunus.habityou.utils.mappers
 
-import com.kawunus.habityou.core.database.entity.NoteEntity
-import com.kawunus.habityou.notes.data.dto.NoteDto
-import com.kawunus.habityou.notes.domain.model.Note
+import com.kawunus.habityou.data.database.entity.NoteEntity
+import com.kawunus.habityou.data.dto.NoteDto
+import com.kawunus.habityou.domain.model.Note
 
 fun NoteDto.toNoteEntity(): NoteEntity {
     return NoteEntity(
