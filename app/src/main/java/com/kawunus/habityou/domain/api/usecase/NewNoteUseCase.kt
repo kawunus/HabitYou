@@ -4,5 +4,5 @@ import com.kawunus.habityou.domain.model.Note
 
 interface NewNoteUseCase {
 
-    suspend fun execute(note: Note)
+    suspend operator fun invoke(note: Note)
 }

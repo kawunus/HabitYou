@@ -7,7 +7,7 @@ import com.kawunus.habityou.utils.mappers.toNoteDto
 
 class NewNoteUseCaseImpl(private val repository: NoteRepository) : NewNoteUseCase {
 
-    override suspend fun execute(note: Note) {
+    override suspend operator fun invoke(note: Note) {
         repository.insertNote(note.toNoteDto())
     }
 }

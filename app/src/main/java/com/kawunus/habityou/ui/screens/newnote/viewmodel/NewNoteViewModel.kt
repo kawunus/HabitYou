@@ -8,14 +8,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class NewNoteViewModel(private val newNoteUseCase: NewNoteUseCase) : ViewModel() {
+class NewNoteViewModel(private val newNote: NewNoteUseCase) : ViewModel() {
 
     private val _state = MutableStateFlow<NewNoteScreenState>(NewNoteScreenState.ReadyToCreate)
     val state = _state.asStateFlow()
 
     fun createNote(title: String, content: String) {
         viewModelScope.launch {
-            newNoteUseCase.execute(
+            newNote(
                 Note(
                     title = title,
                     content = content,
