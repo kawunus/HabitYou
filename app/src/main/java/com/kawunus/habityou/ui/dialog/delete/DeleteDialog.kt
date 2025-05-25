@@ -1,4 +1,4 @@
-package com.kawunus.habityou.core.presentation.dialog.delete
+package com.kawunus.habityou.ui.dialog.delete
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth
