@@ -5,7 +5,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.kawunus.habityou.editnote.presentation.ui.EditNoteScreen
 import com.kawunus.habityou.navigation.model.BottomNavItem
+import com.kawunus.habityou.navigation.model.NavigationConstants.EDIT_NOTE_ROUTE
+import com.kawunus.habityou.navigation.model.NavigationConstants.NEW_NOTE_ROUTE
 import com.kawunus.habityou.newnote.presentation.ui.NewNoteScreen
 import com.kawunus.habityou.notes.presentation.ui.DiaryScreen
 import com.kawunus.habityou.ui.root.BadHabitsScreen
@@ -32,8 +35,11 @@ fun NavigationHost(
         composable(BottomNavItem.UsefulHabits.route) {
             UsefulHabitsScreen()
         }
-        composable("newNote") {
+        composable(NEW_NOTE_ROUTE) {
             NewNoteScreen(navController = navController)
+        }
+        composable(EDIT_NOTE_ROUTE) {
+            EditNoteScreen(navController = navController)
         }
     }
 }

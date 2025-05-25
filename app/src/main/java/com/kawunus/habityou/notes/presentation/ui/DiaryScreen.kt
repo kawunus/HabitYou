@@ -39,7 +39,8 @@ fun DiaryScreen(navController: NavController) {
                 DiaryContent(
                     notesList = (state as DiaryScreenState.Content).content,
                     onNoteEditClick = { note ->
-                        // TODO: handle edit
+                        navController.currentBackStackEntry?.savedStateHandle?.set("note", note)
+                        navController.navigate(NavigationConstants.EDIT_NOTE_ROUTE)
                     },
                     onNoteDeleteClick = { note ->
                         viewModel.deleteNote(note)

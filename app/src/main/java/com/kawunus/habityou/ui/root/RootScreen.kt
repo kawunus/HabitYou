@@ -24,6 +24,8 @@ import androidx.navigation.compose.rememberNavController
 import com.kawunus.habityou.R
 import com.kawunus.habityou.navigation.model.BottomNavItem
 import com.kawunus.habityou.navigation.model.NavigationConstants
+import com.kawunus.habityou.navigation.model.NavigationConstants.EDIT_NOTE_ROUTE
+import com.kawunus.habityou.navigation.model.NavigationConstants.NEW_NOTE_ROUTE
 import com.kawunus.habityou.navigation.ui.BottomNavigationBar
 import com.kawunus.habityou.navigation.ui.NavigationHost
 import org.koin.compose.koinInject
@@ -38,8 +40,8 @@ fun RootScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    val hideTopBarRoutes = listOf(NavigationConstants.NEW_NOTE_ROUTE)
-    val hideBottomBarRoutes = listOf(NavigationConstants.NEW_NOTE_ROUTE)
+    val hideTopBarRoutes = listOf(NEW_NOTE_ROUTE, EDIT_NOTE_ROUTE)
+    val hideBottomBarRoutes = listOf(NEW_NOTE_ROUTE, EDIT_NOTE_ROUTE)
 
     val showTopBar = currentRoute !in hideTopBarRoutes
     val showBottomBar = currentRoute !in hideBottomBarRoutes
