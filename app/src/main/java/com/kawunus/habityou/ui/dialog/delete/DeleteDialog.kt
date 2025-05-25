@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.kawunus.habityou.R
 
 @Composable
-fun EditDeleteDialog(
+fun DeleteDialog(
     modifier: Modifier = Modifier,
     @StringRes
     titleResId: Int,
@@ -26,7 +26,12 @@ fun EditDeleteDialog(
     AlertDialog(
         modifier = modifier,
         onDismissRequest = onDismiss,
-        icon = { Icon(Icons.Filled.Delete, contentDescription = null) },
+        icon = {
+            Icon(
+                Icons.Filled.Delete,
+                contentDescription = stringResource(R.string.delete_icon_description)
+            )
+        },
         title = { Text(text = stringResource(titleResId), textAlign = TextAlign.Center) },
         text = {
             Text(

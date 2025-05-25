@@ -19,7 +19,7 @@ import com.kawunus.habityou.navigation.model.NavigationConstants
 import com.kawunus.habityou.notes.domain.model.Note
 import com.kawunus.habityou.notes.presentation.viewmodel.DiaryScreenState
 import com.kawunus.habityou.notes.presentation.viewmodel.DiaryViewModel
-import com.kawunus.habityou.ui.dialog.delete.EditDeleteDialog
+import com.kawunus.habityou.ui.dialog.delete.DeleteDialog
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -57,7 +57,7 @@ fun DiaryScreen(navController: NavController) {
                     })
 
                 if (deleteDialogOpen) {
-                    EditDeleteDialog(
+                    DeleteDialog(
                         titleResId = R.string.dialog_delete_title_note,
                         onDismiss = {
                             deleteDialogOpen = false
@@ -65,7 +65,7 @@ fun DiaryScreen(navController: NavController) {
                         },
                         onConfirm = {
                             deleteDialogOpen = false
-                            viewModel.deleteNote(currentNote ?: return@EditDeleteDialog)
+                            viewModel.deleteNote(currentNote ?: return@DeleteDialog)
                             currentNote = null
                         }
                     )

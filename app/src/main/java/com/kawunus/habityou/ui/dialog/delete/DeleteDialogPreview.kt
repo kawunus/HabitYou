@@ -6,8 +6,8 @@ import com.kawunus.habityou.R
 
 @Preview
 @Composable
-private fun EditDeleteDialogPreview_Note() {
-    EditDeleteDialog(
+private fun DeleteDialogPreview_Note() {
+    DeleteDialog(
         titleResId = R.string.dialog_delete_title_note,
         onConfirm = {},
         onDismiss = {})
@@ -15,8 +15,8 @@ private fun EditDeleteDialogPreview_Note() {
 
 @Preview
 @Composable
-private fun EditDeleteDialogPreview_Habit() {
-    EditDeleteDialog(
+private fun DeleteDialogPreview_Habit() {
+    DeleteDialog(
         titleResId = R.string.dialog_delete_title_habit,
         onConfirm = {},
         onDismiss = {})
