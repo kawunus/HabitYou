@@ -3,8 +3,8 @@ package com.kawunus.habityou.notes.data.impl
 import com.kawunus.habityou.core.database.dao.NoteDao
 import com.kawunus.habityou.notes.data.dto.NoteDto
 import com.kawunus.habityou.notes.domain.api.NoteRepository
-import com.kawunus.habityou.utils.toNoteDto
-import com.kawunus.habityou.utils.toNoteEntity
+import com.kawunus.habityou.utils.mappers.toNoteDto
+import com.kawunus.habityou.utils.mappers.toNoteEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

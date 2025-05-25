@@ -1,6 +1,6 @@
 package com.kawunus.habityou.usefulhabits.presentation.viewmodel
 
-import com.kawunus.habityou.usefulhabits.domain.model.Habit
+import com.kawunus.habityou.usefulhabits.domain.model.UsefulHabit
 import java.time.LocalDate
 
 sealed class UsefulHabitScreenState {
@@ -10,7 +10,7 @@ sealed class UsefulHabitScreenState {
     data object Loading : UsefulHabitScreenState()
 
     data class Content(
-        val habits: List<Habit>,
+        val usefulHabits: List<UsefulHabit>,
         val todaysDate: LocalDate,
         val showStreaks: Boolean,
         val showScore: Boolean,

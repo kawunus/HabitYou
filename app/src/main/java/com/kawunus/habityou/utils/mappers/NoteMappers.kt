@@ -1,4 +1,4 @@
-package com.kawunus.habityou.utils
+package com.kawunus.habityou.utils.mappers
 
 import com.kawunus.habityou.core.database.entity.NoteEntity
 import com.kawunus.habityou.notes.data.dto.NoteDto

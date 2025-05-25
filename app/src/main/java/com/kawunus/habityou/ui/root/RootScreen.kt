@@ -28,7 +28,11 @@ import com.kawunus.habityou.navigation.model.NavigationConstants.EDIT_NOTE_ROUTE
 import com.kawunus.habityou.navigation.model.NavigationConstants.NEW_NOTE_ROUTE
 import com.kawunus.habityou.navigation.ui.BottomNavigationBar
 import com.kawunus.habityou.navigation.ui.NavigationHost
+import com.kawunus.habityou.usefulhabits.domain.model.UsefulHabit
+import com.kawunus.habityou.usefulhabits.domain.model.UsefulHabitFrequency
+import com.kawunus.habityou.usefulhabits.presentation.ui.UsefulHabitCard
 import org.koin.compose.koinInject
+import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -89,6 +93,21 @@ fun BadHabitsScreen() {
 @Composable
 fun UsefulHabitsScreen() {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(stringResource(R.string.useful_habits))
+        val sampleUsefulHabit = UsefulHabit(
+            id = 1,
+            name = "Drink Water",
+            type = UsefulHabitFrequency.DAILY,
+            streak = 5,
+            score = 80,
+            completed = listOf(LocalDate.now()),
+            completedByWeek = emptyList()
+        )
+
+        UsefulHabitCard(
+            usefulHabit = sampleUsefulHabit,
+            completedOnClick = { id, date -> println("Completed habit $id on $date") },
+            showStatistic = true,
+            todaysDate = LocalDate.now()
+        )
     }
 }

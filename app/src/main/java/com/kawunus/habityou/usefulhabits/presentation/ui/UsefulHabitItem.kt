@@ -37,8 +37,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kawunus.habityou.R
-import com.kawunus.habityou.usefulhabits.domain.model.Habit
-import com.kawunus.habityou.usefulhabits.domain.model.HabitFrequency
+import com.kawunus.habityou.usefulhabits.domain.model.UsefulHabit
+import com.kawunus.habityou.usefulhabits.domain.model.UsefulHabitFrequency
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle
@@ -46,7 +46,7 @@ import java.util.Locale
 
 @Composable
 fun UsefulHabitCard(
-    habit: Habit,
+    usefulHabit: UsefulHabit,
     completedOnClick: (Int, LocalDate) -> Unit,
     modifier: Modifier = Modifier,
     showStatistic: Boolean,
@@ -81,13 +81,13 @@ fun UsefulHabitCard(
             ) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = habit.name, style = MaterialTheme.typography.titleMedium
+                        text = usefulHabit.name, style = MaterialTheme.typography.titleMedium
                     )
                     if (showStatistic) {
                         Text(
                             text = String.format(
                                 stringResource(R.string.useful_habit_current_streak),
-                                habit.streak
+                                usefulHabit.streak
                             ),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -96,9 +96,9 @@ fun UsefulHabitCard(
                 }
 
                 HabitToggleButton(
-                    onCheckedChange = { completedOnClick(habit.id, todaysDate) },
-                    checked = habit.completed.contains(todaysDate),
-                    checkedSecondary = habit.completedByWeek.contains(todaysDate),
+                    onCheckedChange = { completedOnClick(usefulHabit.id, todaysDate) },
+                    checked = usefulHabit.completed.contains(todaysDate),
+                    checkedSecondary = usefulHabit.completedByWeek.contains(todaysDate),
                     contentDescription = "${todaysDate.dayOfWeek} ${todaysDate.dayOfMonth}"
                 )
 
@@ -123,10 +123,10 @@ fun UsefulHabitCard(
                         val date = startOfWeek.plusDays(offset.toLong())
                         HomeHabitCardDay(
                             date = date,
-                            completed = habit.completed.contains(date),
-                            completedByWeek = habit.completedByWeek.contains(date),
+                            completed = usefulHabit.completed.contains(date),
+                            completedByWeek = usefulHabit.completedByWeek.contains(date),
                             onCheckedChange = {
-                                completedOnClick(habit.id, date)
+                                completedOnClick(usefulHabit.id, date)
                             })
                     }
                 }
@@ -193,10 +193,10 @@ private fun HomeHabitCardDay(
 @Composable
 private fun HomeHabitCardPreview() {
     UsefulHabitCard(
-        habit = Habit(
+        usefulHabit = UsefulHabit(
             id = 1,
             name = "Reading",
-            type = HabitFrequency.DAILY,
+            type = UsefulHabitFrequency.DAILY,
             streak = 2,
             score = 43,
             completed = listOf(),
@@ -213,10 +213,10 @@ private fun HomeHabitCardPreview() {
 @Composable
 private fun HomeHabitCardExpandedPreview() {
     UsefulHabitCard(
-        habit = Habit(
+        usefulHabit = UsefulHabit(
             id = 1,
             name = "Reading",
-            type = HabitFrequency.DAILY,
+            type = UsefulHabitFrequency.DAILY,
             streak = 2,
             score = 43,
             completed = listOf(
