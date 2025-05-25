@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.ExperimentalMaterial3Api
-import com.kawunus.habityou.ui.root.RootScreen
+import com.kawunus.habityou.ui.root.ui.RootScreen
 import com.kawunus.habityou.ui.theme.HabituTheme
 
 class MainActivity : ComponentActivity() {
