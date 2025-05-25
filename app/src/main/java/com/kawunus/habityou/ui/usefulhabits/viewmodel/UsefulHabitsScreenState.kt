@@ -3,11 +3,11 @@ package com.kawunus.habityou.ui.usefulhabits.viewmodel
 import com.kawunus.habityou.domain.model.UsefulHabit
 import java.time.LocalDate
 
-sealed class UsefulHabitScreenState {
+sealed class UsefulHabitsScreenState {
 
-    data object Empty : UsefulHabitScreenState()
+    data object Empty : UsefulHabitsScreenState()
 
-    data object Loading : UsefulHabitScreenState()
+    data object Loading : UsefulHabitsScreenState()
 
     data class Content(
         val usefulHabits: List<UsefulHabit>,
@@ -15,5 +15,5 @@ sealed class UsefulHabitScreenState {
         val showStreaks: Boolean,
         val showScore: Boolean,
         val showSubtitle: Boolean,
-    ) : UsefulHabitScreenState()
+    ) : UsefulHabitsScreenState()
 }
