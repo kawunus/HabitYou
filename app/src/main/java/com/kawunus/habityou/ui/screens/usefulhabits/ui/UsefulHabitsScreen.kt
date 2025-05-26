@@ -64,7 +64,14 @@ fun UsefulHabitsScreen(navController: NavController) {
                                 viewModel.toggleEntry(id, date)
                             },
                             showStatistic = content.showStreaks || content.showScore,
-                            todaysDate = content.todaysDate
+                            todaysDate = content.todaysDate,
+                            onDeleteIconClick = { habit ->
+                                viewModel.deleteHabit(habit.id)
+                            },
+                            onEditIconClick = { habit ->
+                            },
+                            onMoreIconClick = { habit ->
+                            }
                         )
                     }
                 }

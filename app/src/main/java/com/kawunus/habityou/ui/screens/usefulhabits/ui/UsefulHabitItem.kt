@@ -47,7 +47,10 @@ fun UsefulHabitCard(
     modifier: Modifier = Modifier,
     showStatistic: Boolean,
     todaysDate: LocalDate,
-    expandedInitialValue: Boolean = false
+    expandedInitialValue: Boolean = false,
+    onDeleteIconClick: (usefulHabit: UsefulHabit) -> Unit,
+    onEditIconClick: (usefulHabit: UsefulHabit) -> Unit,
+    onMoreIconClick: (usefulHabit: UsefulHabit) -> Unit
 ) {
     var expanded by rememberSaveable { mutableStateOf(expandedInitialValue) }
 
@@ -117,19 +120,19 @@ fun UsefulHabitCard(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Row(modifier = Modifier.align(Alignment.End)) {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { onEditIconClick(usefulHabit) }) {
                         Icon(
                             imageVector = Icons.Filled.Edit,
                             contentDescription = stringResource(R.string.edit_icon_description)
                         )
                     }
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { onDeleteIconClick(usefulHabit) }) {
                         Icon(
                             imageVector = Icons.Filled.Delete,
                             contentDescription = stringResource(R.string.delete_icon_description)
                         )
                     }
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = { onMoreIconClick(usefulHabit) }) {
                         Icon(
                             imageVector = Icons.Filled.MoreHoriz,
                             contentDescription = stringResource(R.string.more_icon_description)
@@ -188,7 +191,10 @@ private fun UsefulHabitCardPreview() {
         completedOnClick = { _, _ -> },
         expandedInitialValue = false,
         showStatistic = true,
-        todaysDate = LocalDate.parse("2025-01-09")
+        todaysDate = LocalDate.parse("2025-01-09"),
+        onDeleteIconClick = {},
+        onEditIconClick = {},
+        onMoreIconClick = {}
     )
 }
 
@@ -212,6 +218,9 @@ private fun UsefulHabitCardExpandedPreview() {
         completedOnClick = { _, _ -> },
         expandedInitialValue = true,
         showStatistic = true,
-        todaysDate = LocalDate.parse("2025-05-26")
+        todaysDate = LocalDate.parse("2025-05-26"),
+        onDeleteIconClick = {},
+        onEditIconClick = {},
+        onMoreIconClick = {}
     )
 }

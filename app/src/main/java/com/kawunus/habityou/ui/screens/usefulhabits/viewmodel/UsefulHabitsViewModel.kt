@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kawunus.habityou.domain.api.usecase.CalculateScoreUseCase
 import com.kawunus.habityou.domain.api.usecase.CalculateStreaksUseCase
+import com.kawunus.habityou.domain.api.usecase.DeleteUsefulHabitByIdUseCase
 import com.kawunus.habityou.domain.api.usecase.GetUsefulHabitsWithEntriesUseCase
 import com.kawunus.habityou.domain.api.usecase.NewEntryUseCase
 import com.kawunus.habityou.domain.model.Entry
@@ -22,7 +23,8 @@ class UsefulHabitsViewModel(
     private val calculateStreaks: CalculateStreaksUseCase,
     private val calculateScore: CalculateScoreUseCase,
     private val clock: Clock,
-    private val getUsefulHabitsWithEntries: GetUsefulHabitsWithEntriesUseCase
+    private val getUsefulHabitsWithEntries: GetUsefulHabitsWithEntriesUseCase,
+    private val deleteUsefulHabitById: DeleteUsefulHabitByIdUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<UsefulHabitsScreenState>(UsefulHabitsScreenState.Loading)
@@ -39,6 +41,12 @@ class UsefulHabitsViewModel(
             getUsefulHabitsWithEntries().collectLatest { habitsList ->
                 processResult(habitsList)
             }
+        }
+    }
+
+    fun deleteHabit(habitId: Int) {
+        viewModelScope.launch {
+            deleteUsefulHabitById(habitId)
         }
     }
 
