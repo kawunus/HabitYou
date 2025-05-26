@@ -110,7 +110,8 @@ private fun HabitFrequencyDropdown(
         OutlinedTextField(
             modifier = Modifier
                 .menuAnchor()
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
             readOnly = true,
             value = stringResource(id = selectedFrequency.userReadableStringRes),
             onValueChange = {},
