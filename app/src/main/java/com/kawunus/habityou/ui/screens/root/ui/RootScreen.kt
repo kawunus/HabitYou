@@ -26,6 +26,7 @@ import com.kawunus.habityou.ui.common.navigation.model.BottomNavItem
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.EDIT_NOTE_ROUTE
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_NOTE_ROUTE
+import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_USEFUL_HABIT_ROUTE
 import com.kawunus.habityou.ui.common.navigation.ui.BottomNavigationBar
 import com.kawunus.habityou.ui.common.navigation.ui.NavigationHost
 import com.kawunus.habityou.ui.screens.root.viewmodel.ToolbarViewModel
@@ -41,8 +42,8 @@ fun RootScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    val hideTopBarRoutes = listOf(NEW_NOTE_ROUTE, EDIT_NOTE_ROUTE)
-    val hideBottomBarRoutes = listOf(NEW_NOTE_ROUTE, EDIT_NOTE_ROUTE)
+    val hideTopBarRoutes = listOf(NEW_NOTE_ROUTE, EDIT_NOTE_ROUTE, NEW_USEFUL_HABIT_ROUTE)
+    val hideBottomBarRoutes = listOf(NEW_NOTE_ROUTE, EDIT_NOTE_ROUTE, NEW_USEFUL_HABIT_ROUTE)
 
     val showTopBar = currentRoute !in hideTopBarRoutes
     val showBottomBar = currentRoute !in hideBottomBarRoutes

@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_USEFUL_HABIT_ROUTE
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsScreenState
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -40,7 +41,7 @@ fun UsefulHabitsScreen(navController: NavController) {
     Scaffold(
         floatingActionButton = {
             if (state !is UsefulHabitsScreenState.Loading) {
-                FloatingActionButton(onClick = { }) {
+                FloatingActionButton(onClick = { navController.navigate(NEW_USEFUL_HABIT_ROUTE) }) {
                     Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
                 }
             }

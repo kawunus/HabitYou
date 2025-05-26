@@ -11,4 +11,6 @@ object NavigationConstants {
     const val NEW_NOTE_ROUTE = "newNote"
 
     const val EDIT_NOTE_ROUTE = "editNote"
+
+    const val NEW_USEFUL_HABIT_ROUTE = "newHabit"
 }
