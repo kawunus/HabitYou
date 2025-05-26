@@ -20,7 +20,7 @@ import org.koin.androidx.compose.koinViewModel
 fun UpdateUsefulHabitScreen(navController: NavController) {
 
     val viewModel = koinViewModel<UpdateUsefulHabitViewModel>()
-    val state = viewModel.state.collectAsState()
+    val state by viewModel.state.collectAsState()
 
     val habit = navController.previousBackStackEntry
         ?.savedStateHandle

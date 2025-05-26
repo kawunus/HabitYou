@@ -1,5 +1,6 @@
 package com.kawunus.habityou.ui.screens.updateusefulhabit.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kawunus.habityou.domain.api.usecase.DeleteUsefulHabitByIdUseCase
@@ -33,6 +34,7 @@ class UpdateUsefulHabitViewModel(
     }
 
     private fun renderState(state: UpdateUsefulHabitScreenState) {
+        Log.e("UpdateUsefulHabitViewModel", "renderState: $state")
         _state.value = state
     }
 }
