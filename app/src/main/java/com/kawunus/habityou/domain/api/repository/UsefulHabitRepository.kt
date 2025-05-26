@@ -5,9 +5,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface UsefulHabitRepository {
 
-    suspend fun getAllUsefulHabits(): Flow<List<UsefulHabitDto>>
+    fun getAllUsefulHabits(): Flow<List<UsefulHabitDto>>
 
-    suspend fun getUsefulHabitById(id: Int): Flow<UsefulHabitDto?>
+    fun getUsefulHabitById(id: Int): Flow<UsefulHabitDto?>
 
     suspend fun insertUsefulHabit(habit: UsefulHabitDto)
 

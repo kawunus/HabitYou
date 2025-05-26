@@ -6,15 +6,19 @@ import com.kawunus.habityou.domain.api.repository.UsefulHabitRepository
 import com.kawunus.habityou.utils.mappers.toUsefulHabitDto
 import com.kawunus.habityou.utils.mappers.toUsefulHabitEntity
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class UsefulHabitRepositoryImpl(private val habitDao: UsefulHabitDao) : UsefulHabitRepository {
-    override suspend fun getAllUsefulHabits(): Flow<List<UsefulHabitDto>> = flow {
-        emit(habitDao.getAllUsefulHabits().map { it.toUsefulHabitDto() })
+    override fun getAllUsefulHabits(): Flow<List<UsefulHabitDto>> {
+        return habitDao.getAllUsefulHabits().map { list ->
+            list.map { it.toUsefulHabitDto() }
+        }
     }
 
-    override suspend fun getUsefulHabitById(id: Int): Flow<UsefulHabitDto?> = flow {
-        emit(habitDao.getUsefulHabitById(id)?.toUsefulHabitDto())
+    override fun getUsefulHabitById(id: Int): Flow<UsefulHabitDto?> {
+        return habitDao.getUsefulHabitById(id).map {
+            it?.toUsefulHabitDto()
+        }
     }
 
     override suspend fun insertUsefulHabit(habit: UsefulHabitDto) {
