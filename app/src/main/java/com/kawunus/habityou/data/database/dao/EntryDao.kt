@@ -6,16 +6,17 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.Companion.REPLACE
 import androidx.room.Query
 import com.kawunus.habityou.data.database.entity.EntryEntity
+import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
 @Dao
 interface EntryDao {
 
     @Query("SELECT * FROM entries ORDER BY date DESC")
-    suspend fun getAllEntries(): List<EntryEntity>
+    fun getAllEntries(): Flow<List<EntryEntity>>
 
     @Query("SELECT * FROM entries WHERE id = :habitId ORDER BY date DESC")
-    suspend fun getAllEntriesById(habitId: Int): List<EntryEntity>
+    fun getAllEntriesById(habitId: Int): Flow<List<EntryEntity>>
 
     @Insert(onConflict = REPLACE)
     suspend fun insertEntry(entry: EntryEntity)
