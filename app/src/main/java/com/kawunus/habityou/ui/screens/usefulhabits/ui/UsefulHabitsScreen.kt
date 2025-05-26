@@ -20,12 +20,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.kawunus.habityou.R
+import com.kawunus.habityou.domain.model.UsefulHabit
+import com.kawunus.habityou.ui.common.dialog.delete.DeleteDialog
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_USEFUL_HABIT_ROUTE
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsScreenState
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsViewModel
@@ -37,6 +42,9 @@ import org.koin.androidx.compose.koinViewModel
 fun UsefulHabitsScreen(navController: NavController) {
     val viewModel: UsefulHabitsViewModel = koinViewModel()
     val state by viewModel.state.collectAsState()
+
+    var deleteDialogOpen by remember { mutableStateOf(false) }
+    var currentHabit by remember { mutableStateOf<UsefulHabit?>(null) }
 
     LaunchedEffect(viewModel) {
         viewModel.getData()
@@ -66,7 +74,8 @@ fun UsefulHabitsScreen(navController: NavController) {
                             showStatistic = content.showStreaks || content.showScore,
                             todaysDate = content.todaysDate,
                             onDeleteIconClick = { habit ->
-                                viewModel.deleteHabit(habit.id)
+                                deleteDialogOpen = true
+                                currentHabit = habit
                             },
                             onEditIconClick = { habit ->
                             },
@@ -103,6 +112,20 @@ fun UsefulHabitsScreen(navController: NavController) {
                 }
             }
         }
+        if (deleteDialogOpen) {
+            DeleteDialog(
+                titleResId = R.string.dialog_delete_title_habit,
+                onDismiss = {
+                    deleteDialogOpen = false
+                    currentHabit = null
+                },
+                onConfirm = {
+                    deleteDialogOpen = false
+                    viewModel.deleteHabit(currentHabit?.id ?: return@DeleteDialog)
+                    currentHabit = null
+                })
+        }
     }
 }
+
 
