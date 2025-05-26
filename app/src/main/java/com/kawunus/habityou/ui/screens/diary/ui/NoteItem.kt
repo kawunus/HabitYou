@@ -2,7 +2,6 @@ package com.kawunus.habityou.ui.screens.diary.ui
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,7 +13,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
@@ -28,7 +26,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kawunus.habityou.R
@@ -41,12 +38,6 @@ internal fun NoteItem(
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    val rotationAngle by animateFloatAsState(
-        targetValue = if (expanded) 180f else 0f,
-        animationSpec = tween(durationMillis = 300),
-        label = "ArrowRotation"
-    )
-
     ElevatedCard(
         modifier = modifier
             .fillMaxWidth()
@@ -55,7 +46,8 @@ internal fun NoteItem(
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
-        )
+        ),
+        onClick = { expanded = !expanded }
     ) {
         Column(
             modifier = Modifier
@@ -77,16 +69,6 @@ internal fun NoteItem(
                         text = formatDate(note.date),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-
-                IconButton(onClick = { expanded = !expanded }) {
-                    Icon(
-                        imageVector = Icons.Default.ExpandMore,
-                        contentDescription = if (expanded) stringResource(R.string.collapse_icon_description) else stringResource(
-                            R.string.expand_icon_description
-                        ),
-                        modifier = Modifier.rotate(rotationAngle)
                     )
                 }
             }
