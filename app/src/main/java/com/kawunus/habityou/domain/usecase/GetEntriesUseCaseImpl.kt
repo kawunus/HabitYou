@@ -18,7 +18,6 @@ class GetEntriesUseCaseImpl(
             usefulHabitRepository.getUsefulHabitById(habitId),
             entryRepository.getEntriesByHabitId(habitId)
         ) { habit, entries ->
-
             if (entries.isEmpty() || habit == null)
                 return@combine listOf<Entry>()
 

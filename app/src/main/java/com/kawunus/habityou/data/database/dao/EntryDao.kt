@@ -15,7 +15,7 @@ interface EntryDao {
     @Query("SELECT * FROM entries ORDER BY date DESC")
     fun getAllEntries(): Flow<List<EntryEntity>>
 
-    @Query("SELECT * FROM entries WHERE id = :habitId ORDER BY date DESC")
+    @Query("SELECT * FROM entries WHERE useful_habit_id = :habitId ORDER BY date DESC")
     fun getAllEntriesById(habitId: Int): Flow<List<EntryEntity>>
 
     @Insert(onConflict = REPLACE)

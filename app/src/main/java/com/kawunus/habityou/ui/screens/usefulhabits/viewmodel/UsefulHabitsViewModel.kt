@@ -11,6 +11,7 @@ import com.kawunus.habityou.domain.model.UsefulHabit
 import com.kawunus.habityou.domain.model.UsefulHabitWithEntries
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.time.Clock
@@ -35,7 +36,7 @@ class UsefulHabitsViewModel(
 
     fun getData() {
         viewModelScope.launch {
-            getUsefulHabitsWithEntries().collect { habitsList ->
+            getUsefulHabitsWithEntries().collectLatest { habitsList ->
                 processResult(habitsList)
             }
         }

@@ -39,9 +39,8 @@ class GetUsefulHabitsWithEntriesUseCaseImpl(
      * @return A [Flow] that emits the combined data of habits and their entries.
      */
     @OptIn(ExperimentalCoroutinesApi::class)
-    override suspend fun invoke(): Flow<List<UsefulHabitWithEntries>> {
+    override fun invoke(): Flow<List<UsefulHabitWithEntries>> {
         return usefulHabitRepository.getAllUsefulHabits().flatMapLatest { habitsList ->
-
             val flows = habitsList.map { habit ->
                 return@map getEntries(habit.id).map { entries ->
                     UsefulHabitWithEntries(habit, entries)
