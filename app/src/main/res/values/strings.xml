@@ -21,7 +21,7 @@
     <string name="more_icon_description">Подробнее</string>
 
     <!-- Diary screen strings -->
-    <string name="diary_empty">Вы не создали ни одной записи :(</string>
+    <string name="diary_empty">Добавьте запись с помощью кнопки ниже!</string>
 
     <!-- New note screen strings -->
     <string name="new_note_top_bar">Новая заметка</string>
@@ -38,7 +38,7 @@
 
     <!-- Useful habits strings -->
     <string name="useful_habits_current_streak">Дней подряд: %1$s</string>
-    <string name="useful_habits_empty">У вас нет полезных привычек :(</string>
+    <string name="useful_habits_empty">Добавьте полезную привычку с помощью кнопки ниже!</string>
 
     <!-- New useful habit string -->
     <string name="new_useful_habit_top_bar">Новая полезная привычка</string>
