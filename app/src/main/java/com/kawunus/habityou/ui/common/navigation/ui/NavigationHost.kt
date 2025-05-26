@@ -29,10 +29,10 @@ fun NavigationHost(
         navController = navController, startDestination = startDestination, modifier = modifier
     ) {
         composable(BottomNavItem.Diary.route) {
-            DiaryScreen(navController = navController)
+            DiaryScreen(navController)
         }
         composable(BottomNavItem.BadHabits.route) {
-            BadHabitsScreen()
+            BadHabitsScreen(navController)
         }
         composable(BottomNavItem.UsefulHabits.route) {
             UsefulHabitsScreen(navController)
