@@ -15,31 +15,42 @@ class CalculateStreaksUseCaseImpl(
 
     override fun invoke(habitId: Int): Flow<List<Streak>> {
         return getEntries(habitId).map { list ->
-            if (list.isEmpty()) {
-                return@map listOf<Streak>()
-            }
+            if (list.isEmpty()) return@map emptyList()
+
             val today = LocalDate.now(clock)
             val entries = list
-                .sortedByDescending { it.date }
                 .filter { !it.date.isAfter(today) }
+                .sortedBy { it.date }
+
             val streaks = mutableListOf<Streak>()
-            var streak = 0
-            var endDate = entries.first().date
-            var lastDate = entries.first().date.plusDays(1)
+            var streakLength = 1
+            var streakStartDate = entries.first().date
 
-            entries.forEach { entry ->
+            for (i in 1 until entries.size) {
+                val current = entries[i].date
+                val previous = entries[i - 1].date
 
-                if (entry.date.plusDays(1) == lastDate) streak++
-                else {
-                    if (streak > 1) streaks.add(Streak(streak, endDate))
-                    endDate = entry.date
-                    streak = 1
+                if (current == previous.plusDays(1)) {
+                    streakLength++
+                } else {
+                    if (streakLength >= 2) {
+                        streaks.add(
+                            Streak(length = streakLength, endDate = previous)
+                        )
+                    }
+
+                    streakLength = 1
+                    streakStartDate = current
                 }
-                lastDate = entry.date
-
             }
-            if (streak > 1) streaks.add(Streak(streak, endDate))
+
+            val lastDate = entries.last().date
+            if (streakLength >= 2) {
+                streaks.add(Streak(length = streakLength, endDate = lastDate))
+            }
+
             return@map streaks
         }
     }
 }
+
