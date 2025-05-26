@@ -10,6 +10,7 @@ import com.kawunus.habityou.domain.api.usecase.GetUsefulHabitsWithEntriesUseCase
 import com.kawunus.habityou.domain.api.usecase.NewEntryUseCase
 import com.kawunus.habityou.domain.api.usecase.NewNoteUseCase
 import com.kawunus.habityou.domain.api.usecase.NewUsefulHabitUseCase
+import com.kawunus.habityou.domain.api.usecase.UpdateUsefulHabitUseCase
 import com.kawunus.habityou.domain.usecase.CalculateScoreUseCaseImpl
 import com.kawunus.habityou.domain.usecase.CalculateStreaksUseCaseImpl
 import com.kawunus.habityou.domain.usecase.DeleteUsefulHabitByIdUseCaseImpl
@@ -20,6 +21,7 @@ import com.kawunus.habityou.domain.usecase.GetUsefulHabitsWithEntriesUseCaseImpl
 import com.kawunus.habityou.domain.usecase.NewEntryUseCaseImpl
 import com.kawunus.habityou.domain.usecase.NewNoteUseCaseImpl
 import com.kawunus.habityou.domain.usecase.NewUsefulHabitUseCaseImpl
+import com.kawunus.habityou.domain.usecase.UpdateUsefulHabitUseCaseImpl
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -45,4 +47,6 @@ val interactorModule = module {
     singleOf(::NewUsefulHabitUseCaseImpl) { bind<NewUsefulHabitUseCase>() }
 
     singleOf(::DeleteUsefulHabitByIdUseCaseImpl) { bind<DeleteUsefulHabitByIdUseCase>() }
+
+    singleOf(::UpdateUsefulHabitUseCaseImpl) { bind<UpdateUsefulHabitUseCase>() }
 }

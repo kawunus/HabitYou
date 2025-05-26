@@ -23,6 +23,7 @@ import com.kawunus.habityou.R
 import com.kawunus.habityou.domain.model.UsefulHabit
 import com.kawunus.habityou.ui.common.dialog.delete.DeleteDialog
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_USEFUL_HABIT_ROUTE
+import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.UPDATE_USEFUL_HABIT_ROUTE
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsScreenState
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -63,7 +64,8 @@ fun UsefulHabitsScreen(navController: NavController) {
                         currentHabit = habit
                     },
                     onEditClick = { habit ->
-
+                        navController.currentBackStackEntry?.savedStateHandle?.set("habit", habit)
+                        navController.navigate(UPDATE_USEFUL_HABIT_ROUTE)
                     },
                     onMoreClick = { habit ->
 

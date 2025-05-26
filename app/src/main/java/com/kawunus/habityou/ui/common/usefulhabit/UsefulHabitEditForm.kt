@@ -53,16 +53,15 @@ fun UsefulHabitEditForm(
                     }
                 }) {
                 Text(text = stringResource(R.string.new_item_save))
-
-                if (isDeleteIconVisible) {
-                    IconButton(onClick = {
-                        onDeleteClick()
-                    }) {
-                        Icon(
-                            Icons.Filled.Delete,
-                            contentDescription = stringResource(R.string.delete_icon_description)
-                        )
-                    }
+            }
+            if (isDeleteIconVisible) {
+                IconButton(onClick = {
+                    onDeleteClick()
+                }) {
+                    Icon(
+                        Icons.Filled.Delete,
+                        contentDescription = stringResource(R.string.delete_icon_description)
+                    )
                 }
             }
         })
