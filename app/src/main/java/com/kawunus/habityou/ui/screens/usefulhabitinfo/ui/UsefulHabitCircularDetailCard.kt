@@ -60,7 +60,7 @@ fun UsefulHabitCircularDetailCard(
             containerColor = MaterialTheme.colorScheme.surface
         ),
         elevation = CardDefaults.outlinedCardElevation(defaultElevation = 4.dp),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline)
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.surface)
     ) {
         Box(
             modifier = Modifier
@@ -107,7 +107,7 @@ fun UsefulHabitCircularDetailCard(
                 Text(
                     text = stringResource(id = R.string.useful_habit_details_score),
                     style = Typography.displayMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = MaterialTheme.colorScheme.primary,
                     textAlign = TextAlign.Center
                 )
                 Text(

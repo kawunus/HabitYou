@@ -35,7 +35,7 @@ fun UsefulHabitDetailCard(
             containerColor = MaterialTheme.colorScheme.primaryContainer
         ),
         elevation = CardDefaults.outlinedCardElevation(defaultElevation = 4.dp),
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline)
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.surface)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
