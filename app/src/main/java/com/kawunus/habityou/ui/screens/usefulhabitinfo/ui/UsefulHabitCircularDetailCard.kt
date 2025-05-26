@@ -54,8 +54,7 @@ fun UsefulHabitCircularDetailCard(
 
     OutlinedCard(
         modifier = modifier
-            .aspectRatio(1f)
-            .padding(8.dp),
+            .aspectRatio(1f),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.outlinedCardColors(
             containerColor = MaterialTheme.colorScheme.surface
@@ -71,8 +70,8 @@ fun UsefulHabitCircularDetailCard(
         ) {
             val foregroundColor = MaterialTheme.colorScheme.primary
             val inactiveColor = MaterialTheme.colorScheme.primaryContainer
-            val lineThickness = 16.dp
-            val lineThicknessInactive = 8.dp
+            val lineThickness = 32.dp
+            val lineThicknessInactive = 16.dp
 
             Canvas(modifier = Modifier.fillMaxSize()) {
                 val angle = animatedScore * 360 / 100
@@ -107,7 +106,7 @@ fun UsefulHabitCircularDetailCard(
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
                     text = stringResource(id = R.string.useful_habit_details_score),
-                    style = Typography.titleMedium,
+                    style = Typography.displayMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center
                 )
@@ -115,7 +114,8 @@ fun UsefulHabitCircularDetailCard(
                     text = "${animatedScore.toInt()}%",
                     style = Typography.displayMedium,
                     color = MaterialTheme.colorScheme.primary,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    modifier = modifier.padding(top = 4.dp)
                 )
             }
         }
