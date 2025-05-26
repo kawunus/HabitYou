@@ -8,8 +8,7 @@ fun UsefulHabitEntity.toUsefulHabitDto(): UsefulHabitDto {
         id = id,
         name = name,
         frequency = frequency,
-        streak = streak,
-        score = score
+        repeat = repeat
     )
 }
 
@@ -18,7 +17,6 @@ fun UsefulHabitDto.toUsefulHabitEntity(): UsefulHabitEntity {
         id = id,
         name = name,
         frequency = frequency,
-        streak = streak,
-        score = score
+        repeat = repeat
     )
 }

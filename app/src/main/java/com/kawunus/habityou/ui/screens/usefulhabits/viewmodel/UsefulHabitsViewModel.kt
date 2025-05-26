@@ -2,15 +2,12 @@ package com.kawunus.habityou.ui.screens.usefulhabits.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kawunus.habityou.data.dto.UsefulHabitDto
-import com.kawunus.habityou.domain.api.repository.UsefulHabitRepository
 import com.kawunus.habityou.domain.api.usecase.CalculateScoreUseCase
 import com.kawunus.habityou.domain.api.usecase.CalculateStreaksUseCase
 import com.kawunus.habityou.domain.api.usecase.GetUsefulHabitsWithEntriesUseCase
 import com.kawunus.habityou.domain.api.usecase.NewEntryUseCase
 import com.kawunus.habityou.domain.model.Entry
 import com.kawunus.habityou.domain.model.UsefulHabit
-import com.kawunus.habityou.domain.model.UsefulHabitFrequency
 import com.kawunus.habityou.domain.model.UsefulHabitWithEntries
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,8 +21,7 @@ class UsefulHabitsViewModel(
     private val calculateStreaks: CalculateStreaksUseCase,
     private val calculateScore: CalculateScoreUseCase,
     private val clock: Clock,
-    private val getUsefulHabitsWithEntries: GetUsefulHabitsWithEntriesUseCase,
-    private val habitsRepository: UsefulHabitRepository
+    private val getUsefulHabitsWithEntries: GetUsefulHabitsWithEntriesUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<UsefulHabitsScreenState>(UsefulHabitsScreenState.Loading)
@@ -85,19 +81,5 @@ class UsefulHabitsViewModel(
 
     private fun renderState(state: UsefulHabitsScreenState) {
         _state.value = state
-    }
-
-    fun insertHabit() {
-        viewModelScope.launch {
-            habitsRepository.insertUsefulHabit(
-                UsefulHabitDto(
-                    name = "Проверка заметки",
-                    frequency = UsefulHabitFrequency.DAILY,
-                    streak = null,
-                    score = null
-                )
-            )
-            getData()
-        }
     }
 }

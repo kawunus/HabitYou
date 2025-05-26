@@ -69,7 +69,7 @@ fun NewNoteScreen(
                             viewModel.createNote(title, content)
                         }
                     }) {
-                    Text(text = stringResource(R.string.new_note_save))
+                    Text(text = stringResource(R.string.new_item_save))
                 }
             })
         Spacer(modifier = Modifier.height(16.dp))

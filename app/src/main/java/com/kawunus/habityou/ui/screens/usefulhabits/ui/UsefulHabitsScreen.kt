@@ -40,7 +40,7 @@ fun UsefulHabitsScreen(navController: NavController) {
     Scaffold(
         floatingActionButton = {
             if (state !is UsefulHabitsScreenState.Loading) {
-                FloatingActionButton(onClick = { viewModel.insertHabit() }) {
+                FloatingActionButton(onClick = { }) {
                     Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
                 }
             }
@@ -86,3 +86,4 @@ fun UsefulHabitsScreen(navController: NavController) {
         }
     }
 }
+

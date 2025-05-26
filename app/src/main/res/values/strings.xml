@@ -25,7 +25,7 @@
 
     <!-- New note screen strings -->
     <string name="new_note_top_bar">Новая заметка</string>
-    <string name="new_note_save">Сохранить</string>
+    <string name="new_item_save">Сохранить</string>
     <string name="new_note_title">Заголовок заметки</string>
     <string name="new_note_description">Содержание заметки</string>
 
@@ -38,4 +38,10 @@
 
     <!-- Useful habits strings -->
     <string name="useful_habit_current_streak">Дней подряд: %1$s</string>
+
+    <!-- New useful habit string -->
+    <string name="new_useful_habit_top_bar">Новая полезная привычка</string>
+    <string name="useful_habit_frequency">Частота</string>
+    <string name="useful_habit_frequency_dayly">Ежедневно</string>
+    <string name="new_useful_habit_title">Название привычки</string>
 </resources>

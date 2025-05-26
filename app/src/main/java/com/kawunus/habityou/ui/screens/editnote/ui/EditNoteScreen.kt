@@ -89,7 +89,7 @@ fun EditNoteScreen(
                             )
                         }
                     }) {
-                    Text(text = stringResource(R.string.new_note_save))
+                    Text(text = stringResource(R.string.new_item_save))
                 }
                 IconButton(onClick = {
                     deleteDialogOpen = true

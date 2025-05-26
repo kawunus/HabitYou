@@ -3,6 +3,7 @@ package com.kawunus.habityou.di
 import com.kawunus.habityou.ui.screens.diary.viewmodel.DiaryViewModel
 import com.kawunus.habityou.ui.screens.editnote.viewmodel.EditNoteViewModel
 import com.kawunus.habityou.ui.screens.newnote.viewmodel.NewNoteViewModel
+import com.kawunus.habityou.ui.screens.newusefulhabit.viewmodel.NewUsefulHabitViewModel
 import com.kawunus.habityou.ui.screens.root.viewmodel.ToolbarViewModel
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsViewModel
 import org.koin.core.module.dsl.viewModelOf
@@ -19,4 +20,6 @@ val viewModelModule = module {
     viewModelOf(::EditNoteViewModel)
 
     viewModelOf(::UsefulHabitsViewModel)
+
+    viewModelOf(::NewUsefulHabitViewModel)
 }
