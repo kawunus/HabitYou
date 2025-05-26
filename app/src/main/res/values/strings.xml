@@ -1,3 +1,52 @@
 <resources>
-    <string name="app_name">Habitu</string>
+    <string name="app_name">HabitYou</string>
+
+    <!-- Bottom navigation bar -->
+    <string name="diary">Дневник</string>
+    <string name="bad_habits">Вредные привычки</string>
+    <string name="useful_habits">Полезные привычки</string>
+
+    <!-- Icons description -->
+    <string name="diary_icon_description">Личный дневник</string>
+    <string name="bad_habits_icon_description">Вредные привычки</string>
+    <string name="useful_habits_icon_description">Полезные привычки</string>
+    <string name="settings_icon_description">Настройки</string>
+    <string name="add_icon_description">Добавить</string>
+    <string name="edit_icon_description">Редактировать</string>
+    <string name="delete_icon_description">Удалить</string>
+    <string name="back_icon_description">Назад</string>
+    <string name="save_icon_description">Сохранить</string>
+    <string name="expand_icon_description">Развернуть</string>
+    <string name="collapse_icon_description">Свернуть</string>
+    <string name="more_icon_description">Подробнее</string>
+
+    <!-- Diary screen strings -->
+    <string name="diary_empty">Добавьте запись с помощью кнопки ниже!</string>
+
+    <!-- New note screen strings -->
+    <string name="new_note_top_bar">Новая заметка</string>
+    <string name="new_item_save">Сохранить</string>
+    <string name="new_note_title">Заголовок заметки</string>
+    <string name="new_note_description">Содержание заметки</string>
+
+    <!-- Delete dialog strings -->
+    <string name="dialog_delete_title_note">Вы хотите удалить запись в дневнике?</string>
+    <string name="dialog_delete_title_habit">Вы хотите удалить привычку?</string>
+    <string name="dialog_delete_confirm">Да</string>
+    <string name="dialog_delete_cancel">Нет</string>
+    <string name="dialog_delete_cannot_undo">Это действие нельзя будет отменить</string>
+
+    <!-- Useful habits strings -->
+    <string name="useful_habits_current_streak">Дней подряд: %1$s</string>
+    <string name="useful_habits_empty">Добавьте полезную привычку с помощью кнопки ниже!</string>
+
+    <!-- New useful habit strings -->
+    <string name="new_useful_habit_top_bar">Новая привычка</string>
+    <string name="useful_habit_frequency">Частота</string>
+    <string name="useful_habit_frequency_dayly">Ежедневно</string>
+    <string name="new_useful_habit_title">Название привычки</string>
+
+    <!-- Update useful habit strings -->
+    <string name="update_useful_habit_top_bar">Редактирование привычки</string>
+
 </resources>
