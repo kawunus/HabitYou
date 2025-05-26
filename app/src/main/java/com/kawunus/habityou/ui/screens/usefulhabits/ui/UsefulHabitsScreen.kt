@@ -31,6 +31,7 @@ import androidx.navigation.NavController
 import com.kawunus.habityou.R
 import com.kawunus.habityou.domain.model.UsefulHabit
 import com.kawunus.habityou.ui.common.dialog.delete.DeleteDialog
+import com.kawunus.habityou.ui.common.hint.FullscreenHint
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_USEFUL_HABIT_ROUTE
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsScreenState
 import com.kawunus.habityou.ui.screens.usefulhabits.viewmodel.UsefulHabitsViewModel
@@ -87,14 +88,14 @@ fun UsefulHabitsScreen(navController: NavController) {
             }
 
             UsefulHabitsScreenState.Empty -> {
-                Box(
+                FullscreenHint(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(text = stringResource(R.string.useful_habits_empty))
-                }
+                        .padding(paddingValues)
+                        .fillMaxSize(),
+                    icon = Icons.Default.Add,
+                    iconContentDescription = R.string.add_icon_description,
+                    text = R.string.useful_habits_empty
+                )
             }
 
             UsefulHabitsScreenState.Loading -> {
