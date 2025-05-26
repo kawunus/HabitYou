@@ -49,4 +49,6 @@
     <!-- Update useful habit strings -->
     <string name="update_useful_habit_top_bar">Редактирование привычки</string>
 
+    <!-- Useful habit details strings -->
+    <string name="useful_habit_details_score">Счёт</string>
 </resources>
