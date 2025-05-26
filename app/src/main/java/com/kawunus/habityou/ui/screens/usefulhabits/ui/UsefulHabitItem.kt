@@ -186,7 +186,8 @@ private fun UsefulHabitCardPreview() {
             streak = 2,
             score = 43,
             completed = listOf(),
-            completedByWeek = listOf()
+            completedByWeek = listOf(),
+            repeat = 1
         ),
         completedOnClick = { _, _ -> },
         expandedInitialValue = false,
@@ -213,7 +214,8 @@ private fun UsefulHabitCardExpandedPreview() {
                 LocalDate.parse("2025-07-05"),
                 LocalDate.parse("2025-07-08")
             ),
-            completedByWeek = listOf()
+            completedByWeek = listOf(),
+            repeat = 1
         ),
         completedOnClick = { _, _ -> },
         expandedInitialValue = true,

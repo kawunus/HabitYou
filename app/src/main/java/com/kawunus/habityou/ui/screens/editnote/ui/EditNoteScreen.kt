@@ -38,7 +38,6 @@ fun EditNoteScreen(
 ) {
 
     val viewModel = koinViewModel<EditNoteViewModel>()
-
     val state by viewModel.state.collectAsState()
 
     val note = navController.previousBackStackEntry

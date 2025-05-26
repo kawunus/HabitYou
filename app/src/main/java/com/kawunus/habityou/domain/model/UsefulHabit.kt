@@ -9,7 +9,8 @@ data class UsefulHabit(
     val streak: Int?,
     val score: Int?,
     val completed: List<LocalDate>,
-    val completedByWeek: List<LocalDate>
+    val completedByWeek: List<LocalDate>,
+    val repeat: Int
 ) {
     fun hasBeenCompleted(date: LocalDate): Boolean {
         return when (type) {

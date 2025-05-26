@@ -74,6 +74,7 @@ class UsefulHabitsViewModel(
                     score = score,
                     completed = completed,
                     completedByWeek = completedByWeek,
+                    repeat = habit.repeat
                 )
             }
             renderState(

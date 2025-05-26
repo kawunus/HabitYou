@@ -40,9 +40,13 @@
     <string name="useful_habits_current_streak">Дней подряд: %1$s</string>
     <string name="useful_habits_empty">Добавьте полезную привычку с помощью кнопки ниже!</string>
 
-    <!-- New useful habit string -->
-    <string name="new_useful_habit_top_bar">Новая полезная привычка</string>
+    <!-- New useful habit strings -->
+    <string name="new_useful_habit_top_bar">Новая привычка</string>
     <string name="useful_habit_frequency">Частота</string>
     <string name="useful_habit_frequency_dayly">Ежедневно</string>
     <string name="new_useful_habit_title">Название привычки</string>
+
+    <!-- Update useful habit strings -->
+    <string name="update_useful_habit_top_bar">Редактирование привычки</string>
+
 </resources>
