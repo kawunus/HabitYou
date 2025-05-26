@@ -6,6 +6,7 @@ import com.kawunus.habityou.domain.api.usecase.DiaryInteractor
 import com.kawunus.habityou.domain.model.Note
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class DiaryViewModel(
@@ -19,15 +20,7 @@ class DiaryViewModel(
         renderState(DiaryScreenState.Loading)
 
         viewModelScope.launch {
-            diaryInteractor.getAllNotes().collect { notesList ->
-                processResult(notesList)
-            }
-        }
-    }
-
-    private fun updateData() {
-        viewModelScope.launch {
-            diaryInteractor.getAllNotes().collect { notesList ->
+            diaryInteractor.getAllNotes().collectLatest { notesList ->
                 processResult(notesList)
             }
         }
@@ -48,7 +41,6 @@ class DiaryViewModel(
     fun deleteNote(note: Note) {
         viewModelScope.launch {
             diaryInteractor.deleteNote(note)
-            updateData()
         }
     }
 }

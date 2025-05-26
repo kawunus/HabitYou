@@ -6,7 +6,7 @@ import com.kawunus.habityou.domain.api.repository.EntryRepository
 import com.kawunus.habityou.utils.mappers.toEntryDto
 import com.kawunus.habityou.utils.mappers.toEntryEntity
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class EntryRepositoryImpl(private val entryDao: EntryDao) : EntryRepository {
     override suspend fun toggleEntry(entry: EntryDto) {
@@ -22,11 +22,19 @@ class EntryRepositoryImpl(private val entryDao: EntryDao) : EntryRepository {
         entryDao.deleteEntry(entry.toEntryEntity())
     }
 
-    override suspend fun getEntriesByHabitId(habitId: Int): Flow<List<EntryDto>> = flow {
-        emit(entryDao.getAllEntriesById(habitId).map { it.toEntryDto() })
+    override fun getEntriesByHabitId(habitId: Int): Flow<List<EntryDto>> {
+        return entryDao.getAllEntriesById(habitId).map { list ->
+            list.map {
+                it.toEntryDto()
+            }
+        }
     }
 
-    override suspend fun getAllEntries(): Flow<List<EntryDto>> = flow {
-        emit(entryDao.getAllEntries().map { it.toEntryDto() })
+    override fun getAllEntries(): Flow<List<EntryDto>> {
+        return entryDao.getAllEntries().map { list ->
+            list.map {
+                it.toEntryDto()
+            }
+        }
     }
 }

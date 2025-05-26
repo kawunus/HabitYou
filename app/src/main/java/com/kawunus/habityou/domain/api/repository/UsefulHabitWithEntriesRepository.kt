@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface UsefulHabitWithEntriesRepository {
 
-    suspend fun getAllHabitsWithEntries(): Flow<List<UsefulHabitsWithEntriesDto>>
+    fun getAllHabitsWithEntries(): Flow<List<UsefulHabitsWithEntriesDto>>
 }

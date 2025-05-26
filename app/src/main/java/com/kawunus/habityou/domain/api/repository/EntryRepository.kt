@@ -9,7 +9,7 @@ interface EntryRepository {
 
     suspend fun deleteEntry(entry: EntryDto)
 
-    suspend fun getEntriesByHabitId(habitId: Int): Flow<List<EntryDto>>
+    fun getEntriesByHabitId(habitId: Int): Flow<List<EntryDto>>
 
-    suspend fun getAllEntries(): Flow<List<EntryDto>>
+    fun getAllEntries(): Flow<List<EntryDto>>
 }

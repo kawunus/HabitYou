@@ -11,5 +11,5 @@ interface NoteRepository {
 
     suspend fun updateNote(note: NoteDto)
 
-    suspend fun getAllNotes(): Flow<List<NoteDto>>
+    fun getAllNotes(): Flow<List<NoteDto>>
 }

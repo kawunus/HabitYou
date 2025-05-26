@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GetUsefulHabitsWithEntriesUseCase {
 
-    suspend operator fun invoke(): Flow<List<UsefulHabitWithEntries>>
+    operator fun invoke(): Flow<List<UsefulHabitWithEntries>>
 }

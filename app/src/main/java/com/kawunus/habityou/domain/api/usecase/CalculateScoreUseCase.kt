@@ -4,5 +4,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface CalculateScoreUseCase {
 
-    suspend operator fun invoke(habitId: Int): Flow<Float?>
+    operator fun invoke(habitId: Int): Flow<Float?>
 }

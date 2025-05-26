@@ -6,7 +6,7 @@ import com.kawunus.habityou.domain.api.repository.NoteRepository
 import com.kawunus.habityou.utils.mappers.toNoteDto
 import com.kawunus.habityou.utils.mappers.toNoteEntity
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class NoteRepositoryImpl(private val noteDao: NoteDao) : NoteRepository {
     override suspend fun insertNote(note: NoteDto) {
@@ -21,8 +21,11 @@ class NoteRepositoryImpl(private val noteDao: NoteDao) : NoteRepository {
         noteDao.updateNote(note.toNoteEntity())
     }
 
-    override suspend fun getAllNotes(): Flow<List<NoteDto>> = flow {
-        val noteList = noteDao.getAllNotes().map { it.toNoteDto() }
-        emit(noteList)
+    override fun getAllNotes(): Flow<List<NoteDto>> {
+        return noteDao.getAllNotes().map { list ->
+            list.map {
+                it.toNoteDto()
+            }
+        }
     }
 }

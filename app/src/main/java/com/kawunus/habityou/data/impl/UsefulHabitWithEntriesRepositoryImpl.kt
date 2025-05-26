@@ -5,14 +5,15 @@ import com.kawunus.habityou.data.dto.UsefulHabitsWithEntriesDto
 import com.kawunus.habityou.domain.api.repository.UsefulHabitWithEntriesRepository
 import com.kawunus.habityou.utils.mappers.toUsefulHabitsWithEntriesDto
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class UsefulHabitWithEntriesRepositoryImpl(private val usefulHabitsWithEntriesDao: UsefulHabitWithEntriesDao) :
     UsefulHabitWithEntriesRepository {
-    override suspend fun getAllHabitsWithEntries(): Flow<List<UsefulHabitsWithEntriesDto>> = flow {
-        emit(
-            usefulHabitsWithEntriesDao.getAllUsefulHabitsWithEntries()
-                .map { it.toUsefulHabitsWithEntriesDto() }
-        )
+    override fun getAllHabitsWithEntries(): Flow<List<UsefulHabitsWithEntriesDto>> {
+        return usefulHabitsWithEntriesDao.getAllUsefulHabitsWithEntries().map { list ->
+            list.map {
+                it.toUsefulHabitsWithEntriesDto()
+            }
+        }
     }
 }

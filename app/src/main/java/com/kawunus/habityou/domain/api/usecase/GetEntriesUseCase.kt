@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GetEntriesUseCase {
 
-    suspend operator fun invoke(habitId: Int): Flow<List<Entry>>
+    operator fun invoke(habitId: Int): Flow<List<Entry>>
 }

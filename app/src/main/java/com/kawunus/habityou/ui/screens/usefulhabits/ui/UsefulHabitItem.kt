@@ -39,7 +39,6 @@ import androidx.compose.ui.unit.dp
 import com.kawunus.habityou.R
 import com.kawunus.habityou.domain.model.UsefulHabit
 import com.kawunus.habityou.domain.model.UsefulHabitFrequency
-import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
@@ -118,9 +117,9 @@ fun UsefulHabitCard(
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Row(horizontalArrangement = Arrangement.SpaceBetween) {
-                    val startOfWeek = todaysDate.with(DayOfWeek.MONDAY)
-                    (0..6).forEach { offset ->
-                        val date = startOfWeek.plusDays(offset.toLong())
+                    val firstDay = todaysDate
+                    (6 downTo 1).forEach { offset ->
+                        val date = firstDay.minusDays(offset.toLong())
                         UsefulHabitCardDay(
                             date = date,
                             completed = usefulHabit.completed.contains(date),
@@ -205,7 +204,7 @@ private fun UsefulHabitCardPreview() {
         completedOnClick = { _, _ -> },
         expandedInitialValue = false,
         showStatistic = true,
-        todaysDate = LocalDate.parse("2025-07-09")
+        todaysDate = LocalDate.parse("2025-01-09")
     )
 }
 
@@ -229,6 +228,6 @@ private fun UsefulHabitCardExpandedPreview() {
         completedOnClick = { _, _ -> },
         expandedInitialValue = true,
         showStatistic = true,
-        todaysDate = LocalDate.parse("2023-07-09")
+        todaysDate = LocalDate.parse("2025-05-26")
     )
 }

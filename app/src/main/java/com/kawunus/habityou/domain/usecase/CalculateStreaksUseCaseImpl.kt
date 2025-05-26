@@ -8,75 +8,37 @@ import kotlinx.coroutines.flow.map
 import java.time.Clock
 import java.time.LocalDate
 
-/**
- * Implementation of [CalculateStreaksUseCase] that calculates consecutive habit streaks
- * based on the dates of completed habit entries.
- *
- * A streak is defined as a sequence of at least two consecutive days with habit entries.
- * Single-day completions are ignored by default.
- *
- * This implementation:
- * - Filters out future dates (only includes entries up to and including today).
- * - Sorts the entries in ascending order (from oldest to newest).
- * - Groups entries into streaks of consecutive days.
- *
- * @property getEntries Use case to retrieve the list of habit entries for a given habit.
- * @property clock Clock used for getting the current date (supports testing and custom time).
- */
 class CalculateStreaksUseCaseImpl(
     private val getEntries: GetEntriesUseCase,
     private val clock: Clock
 ) : CalculateStreaksUseCase {
 
-    /**
-     * Calculates all streaks of at least two consecutive days for the given habit.
-     *
-     * @param habitId The ID of the habit for which to calculate streaks.
-     * @return A [Flow] emitting a list of [Streak] objects, each representing a sequence
-     *         of consecutive completed days.
-     *
-     * Example:
-     * ```
-     * Input dates: [2025-05-21, 2025-05-22, 2025-05-24, 2025-05-25, 2025-05-26]
-     * Output streaks:
-     *   - Streak(length = 2, endDate = 2025-05-22)
-     *   - Streak(length = 3, endDate = 2025-05-26)
-     * ```
-     */
-    override suspend fun invoke(habitId: Int): Flow<List<Streak>> {
+    override fun invoke(habitId: Int): Flow<List<Streak>> {
         return getEntries(habitId).map { list ->
-            if (list.isEmpty()) return@map emptyList()
-
+            if (list.isEmpty()) {
+                return@map listOf<Streak>()
+            }
             val today = LocalDate.now(clock)
             val entries = list
+                .sortedByDescending { it.date }
                 .filter { !it.date.isAfter(today) }
-                .sortedBy { it.date }
-
             val streaks = mutableListOf<Streak>()
+            var streak = 0
+            var endDate = entries.first().date
+            var lastDate = entries.first().date.plusDays(1)
 
-            var currentStreakLength = 1
-            var streakStartDate = entries.first().date
-            var previousDate = entries.first().date
+            entries.forEach { entry ->
 
-            for (i in 1 until entries.size) {
-                val currentDate = entries[i].date
-
-                if (currentDate == previousDate.plusDays(1)) {
-                    currentStreakLength++
-                } else {
-                    if (currentStreakLength >= 2) {
-                        streaks.add(Streak(length = currentStreakLength, endDate = previousDate))
-                    }
-                    currentStreakLength = 1
-                    streakStartDate = currentDate
+                if (entry.date.plusDays(1) == lastDate) streak++
+                else {
+                    if (streak > 1) streaks.add(Streak(streak, endDate))
+                    endDate = entry.date
+                    streak = 1
                 }
-                previousDate = currentDate
-            }
+                lastDate = entry.date
 
-            if (currentStreakLength >= 2) {
-                streaks.add(Streak(length = currentStreakLength, endDate = previousDate))
             }
-
+            if (streak > 1) streaks.add(Streak(streak, endDate))
             return@map streaks
         }
     }

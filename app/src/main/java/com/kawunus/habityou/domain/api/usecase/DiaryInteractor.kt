@@ -7,5 +7,5 @@ interface DiaryInteractor {
 
     suspend fun deleteNote(note: Note)
 
-    suspend fun getAllNotes(): Flow<List<Note>>
+    fun getAllNotes(): Flow<List<Note>>
 }

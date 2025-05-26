@@ -43,7 +43,7 @@ class CalculateScoreUseCaseImpl(
      * @param habitId The unique identifier of the habit.
      * @return A [Flow] emitting a [Float] score between 0 and 1, or `null` if there are no valid entries.
      */
-    override suspend fun invoke(habitId: Int): Flow<Float?> {
+    override fun invoke(habitId: Int): Flow<Float?> {
         return getEntries(habitId).map { list ->
             if (list.isEmpty()) return@map null
 

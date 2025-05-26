@@ -7,15 +7,16 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.kawunus.habityou.data.database.entity.UsefulHabitEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UsefulHabitDao {
 
     @Query("SELECT * FROM useful_habits")
-    suspend fun getAllUsefulHabits(): List<UsefulHabitEntity>
+    fun getAllUsefulHabits(): Flow<List<UsefulHabitEntity>>
 
     @Query("SELECT * FROM useful_habits WHERE id = :id")
-    suspend fun getUsefulHabitById(id: Int): UsefulHabitEntity?
+    fun getUsefulHabitById(id: Int): Flow<UsefulHabitEntity?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUsefulHabit(habit: UsefulHabitEntity)
