@@ -2,7 +2,6 @@ package com.kawunus.habityou.ui.screens.usefulhabits.ui
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,7 +15,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.MoreHoriz
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -31,7 +29,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -54,12 +51,6 @@ fun UsefulHabitCard(
 ) {
     var expanded by rememberSaveable { mutableStateOf(expandedInitialValue) }
 
-    val rotationAngle by animateFloatAsState(
-        targetValue = if (expanded) 180f else 0f,
-        animationSpec = tween(300),
-        label = "ArrowRotation"
-    )
-
     ElevatedCard(
         modifier = modifier
             .fillMaxWidth()
@@ -68,7 +59,10 @@ fun UsefulHabitCard(
         elevation = CardDefaults.cardElevation(4.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
-        )
+        ),
+        onClick = {
+            expanded = !expanded
+        }
     ) {
         Column(
             modifier = Modifier
@@ -101,16 +95,6 @@ fun UsefulHabitCard(
                     contentDescription = "${todaysDate.dayOfWeek} ${todaysDate.dayOfMonth}"
                 )
 
-                IconButton(onClick = { expanded = !expanded }) {
-                    Icon(
-                        imageVector = Icons.Default.ExpandMore,
-                        contentDescription = if (expanded) stringResource(R.string.collapse_icon_description)
-                        else stringResource(
-                            R.string.expand_icon_description
-                        ),
-                        modifier = Modifier.rotate(rotationAngle)
-                    )
-                }
             }
 
             if (expanded) {
