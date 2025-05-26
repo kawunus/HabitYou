@@ -43,7 +43,7 @@ class CalculateStreaksUseCaseImpl(
      *   - Streak(length = 3, endDate = 2025-05-26)
      * ```
      */
-    override suspend fun invoke(habitId: Int): Flow<List<Streak>> {
+    override fun invoke(habitId: Int): Flow<List<Streak>> {
         return getEntries(habitId).map { list ->
             if (list.isEmpty()) return@map emptyList()
 

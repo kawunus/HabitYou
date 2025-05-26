@@ -13,7 +13,7 @@ class GetEntriesUseCaseImpl(
     private val usefulHabitRepository: UsefulHabitRepository,
     private val entryRepository: EntryRepository
 ) : GetEntriesUseCase {
-    override suspend fun invoke(habitId: Int): Flow<List<Entry>> {
+    override fun invoke(habitId: Int): Flow<List<Entry>> {
         return combine(
             usefulHabitRepository.getUsefulHabitById(habitId),
             entryRepository.getEntriesByHabitId(habitId)

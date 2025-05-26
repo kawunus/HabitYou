@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface CalculateStreaksUseCase {
 
-    suspend operator fun invoke(habitId: Int): Flow<List<Streak>>
+    operator fun invoke(habitId: Int): Flow<List<Streak>>
 }
