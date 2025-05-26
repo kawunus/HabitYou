@@ -37,7 +37,8 @@
     <string name="dialog_delete_cannot_undo">Это действие нельзя будет отменить</string>
 
     <!-- Useful habits strings -->
-    <string name="useful_habit_current_streak">Дней подряд: %1$s</string>
+    <string name="useful_habits_current_streak">Дней подряд: %1$s</string>
+    <string name="useful_habits_empty">У вас нет полезных привычек :(</string>
 
     <!-- New useful habit string -->
     <string name="new_useful_habit_top_bar">Новая полезная привычка</string>
