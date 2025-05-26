@@ -14,7 +14,7 @@ class DiaryInteractorImpl(private val noteRepository: NoteRepository) : DiaryInt
         noteRepository.deleteNote(note.toNoteDto())
     }
 
-    override suspend fun getAllNotes(): Flow<List<Note>> {
+    override fun getAllNotes(): Flow<List<Note>> {
         return noteRepository.getAllNotes().map { noteList ->
             noteList.map { it.toNote() }
         }
