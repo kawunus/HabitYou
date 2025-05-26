@@ -38,7 +38,7 @@
 
     <!-- Useful habits strings -->
     <string name="useful_habits_current_streak">Дней подряд: %1$s</string>
-    <string name="useful_habits_empty">"У вас нет полезных привычек :("</string>
+    <string name="useful_habits_empty">У вас нет полезных привычек :(</string>
 
     <!-- New useful habit string -->
     <string name="new_useful_habit_top_bar">Новая полезная привычка</string>
