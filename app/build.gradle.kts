@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.kawunus.habityou"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -59,9 +59,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.kotlinx.coroutines.android)
-    implementation("androidx.compose.material3:material3:1.3.2")
-    implementation("androidx.compose.material:material-icons-extended:1.7.8")
-    implementation("com.google.accompanist:accompanist-navigation-animation:0.34.0")
+    implementation(libs.material3)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.accompanist.navigation.animation)
 
 
 

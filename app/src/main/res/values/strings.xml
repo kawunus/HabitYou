@@ -18,13 +18,14 @@
     <string name="save_icon_description">Сохранить</string>
     <string name="expand_icon_description">Развернуть</string>
     <string name="collapse_icon_description">Свернуть</string>
+    <string name="more_icon_description">Подробнее</string>
 
     <!-- Diary screen strings -->
-    <string name="diary_empty">Вы не создали ни одной записи :(</string>
+    <string name="diary_empty">Добавьте запись с помощью кнопки ниже!</string>
 
     <!-- New note screen strings -->
     <string name="new_note_top_bar">Новая заметка</string>
-    <string name="new_note_save">Сохранить</string>
+    <string name="new_item_save">Сохранить</string>
     <string name="new_note_title">Заголовок заметки</string>
     <string name="new_note_description">Содержание заметки</string>
 
@@ -34,4 +35,18 @@
     <string name="dialog_delete_confirm">Да</string>
     <string name="dialog_delete_cancel">Нет</string>
     <string name="dialog_delete_cannot_undo">Это действие нельзя будет отменить</string>
+
+    <!-- Useful habits strings -->
+    <string name="useful_habits_current_streak">Дней подряд: %1$s</string>
+    <string name="useful_habits_empty">Добавьте полезную привычку с помощью кнопки ниже!</string>
+
+    <!-- New useful habit strings -->
+    <string name="new_useful_habit_top_bar">Новая привычка</string>
+    <string name="useful_habit_frequency">Частота</string>
+    <string name="useful_habit_frequency_dayly">Ежедневно</string>
+    <string name="new_useful_habit_title">Название привычки</string>
+
+    <!-- Update useful habit strings -->
+    <string name="update_useful_habit_top_bar">Редактирование привычки</string>
+
 </resources>
