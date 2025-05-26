@@ -2,6 +2,7 @@ package com.kawunus.habityou.di
 
 import com.kawunus.habityou.domain.api.usecase.CalculateScoreUseCase
 import com.kawunus.habityou.domain.api.usecase.CalculateStreaksUseCase
+import com.kawunus.habityou.domain.api.usecase.DeleteUsefulHabitByIdUseCase
 import com.kawunus.habityou.domain.api.usecase.DiaryInteractor
 import com.kawunus.habityou.domain.api.usecase.EditNoteInteractor
 import com.kawunus.habityou.domain.api.usecase.GetEntriesUseCase
@@ -11,6 +12,7 @@ import com.kawunus.habityou.domain.api.usecase.NewNoteUseCase
 import com.kawunus.habityou.domain.api.usecase.NewUsefulHabitUseCase
 import com.kawunus.habityou.domain.usecase.CalculateScoreUseCaseImpl
 import com.kawunus.habityou.domain.usecase.CalculateStreaksUseCaseImpl
+import com.kawunus.habityou.domain.usecase.DeleteUsefulHabitByIdUseCaseImpl
 import com.kawunus.habityou.domain.usecase.DiaryInteractorImpl
 import com.kawunus.habityou.domain.usecase.EditNoteInteractorImpl
 import com.kawunus.habityou.domain.usecase.GetEntriesUseCaseImpl
@@ -41,4 +43,6 @@ val interactorModule = module {
     singleOf(::GetUsefulHabitsWithEntriesUseCaseImpl) { bind<GetUsefulHabitsWithEntriesUseCase>() }
 
     singleOf(::NewUsefulHabitUseCaseImpl) { bind<NewUsefulHabitUseCase>() }
+
+    singleOf(::DeleteUsefulHabitByIdUseCaseImpl) { bind<DeleteUsefulHabitByIdUseCase>() }
 }

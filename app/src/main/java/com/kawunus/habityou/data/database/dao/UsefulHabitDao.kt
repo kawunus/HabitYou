@@ -1,7 +1,6 @@
 package com.kawunus.habityou.data.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -21,8 +20,8 @@ interface UsefulHabitDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUsefulHabit(habit: UsefulHabitEntity)
 
-    @Delete
-    suspend fun deleteUsefulHabit(habit: UsefulHabitEntity)
+    @Query("DELETE FROM useful_habits WHERE id = :habitId")
+    suspend fun deleteUsefulHabitById(habitId: Int)
 
     @Update
     suspend fun updateUsefulHabit(habit: UsefulHabitEntity)

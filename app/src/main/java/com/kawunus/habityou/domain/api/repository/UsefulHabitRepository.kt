@@ -11,7 +11,7 @@ interface UsefulHabitRepository {
 
     suspend fun insertUsefulHabit(habit: UsefulHabitDto)
 
-    suspend fun deleteUsefulHabit(habit: UsefulHabitDto)
+    suspend fun deleteUsefulHabitById(habitId: Int)
 
     suspend fun updateUsefulHabit(habit: UsefulHabitDto)
 }

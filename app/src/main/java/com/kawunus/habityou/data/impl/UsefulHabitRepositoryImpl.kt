@@ -25,8 +25,8 @@ class UsefulHabitRepositoryImpl(private val habitDao: UsefulHabitDao) : UsefulHa
         habitDao.insertUsefulHabit(habit.toUsefulHabitEntity())
     }
 
-    override suspend fun deleteUsefulHabit(habit: UsefulHabitDto) {
-        habitDao.deleteUsefulHabit(habit.toUsefulHabitEntity())
+    override suspend fun deleteUsefulHabitById(habitId: Int) {
+        habitDao.deleteUsefulHabitById(habitId)
     }
 
     override suspend fun updateUsefulHabit(habit: UsefulHabitDto) {
