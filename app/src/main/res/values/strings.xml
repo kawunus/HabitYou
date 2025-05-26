@@ -19,6 +19,7 @@
     <string name="expand_icon_description">Развернуть</string>
     <string name="collapse_icon_description">Свернуть</string>
     <string name="more_icon_description">Подробнее</string>
+    <string name="calendar_icon_description">Календарь"</string>
 
     <!-- Diary screen strings -->
     <string name="diary_empty">Добавьте запись с помощью кнопки ниже!</string>
@@ -50,5 +51,9 @@
     <string name="update_useful_habit_top_bar">Редактирование привычки</string>
 
     <!-- Useful habit details strings -->
-    <string name="useful_habit_details_score">Счёт</string>
+    <string name="useful_habit_details_score">Результат</string>
+    <string name="useful_habit_details_streak">Подряд</string>
+    <string name="useful_habit_details_longest">Максимум</string>
+    <string name="useful_habit_details_started">Начато</string>
+    <string name="useful_habit_details_total">Всего</string>
 </resources>
