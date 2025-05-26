@@ -79,7 +79,7 @@ fun UsefulHabitCard(
                     Text(
                         text = usefulHabit.name, style = MaterialTheme.typography.titleMedium
                     )
-                    if (showStatistic) {
+                    if (showStatistic && usefulHabit.streak != null) {
                         Text(
                             text = String.format(
                                 stringResource(R.string.useful_habits_current_streak),
