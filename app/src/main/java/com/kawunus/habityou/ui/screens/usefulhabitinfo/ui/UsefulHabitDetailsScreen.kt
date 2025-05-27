@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import com.kawunus.habityou.R
 import com.kawunus.habityou.domain.model.UsefulHabit
 import com.kawunus.habityou.ui.common.dialog.delete.DeleteDialog
+import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.UPDATE_USEFUL_HABIT_ROUTE
 import com.kawunus.habityou.ui.screens.usefulhabitinfo.viewmodel.UsefulHabitDetailsScreenState
 import com.kawunus.habityou.ui.screens.usefulhabitinfo.viewmodel.UsefulHabitDetailsViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -25,7 +26,7 @@ fun UsefulHabitDetailsScreen(
 
     val habit = navController.previousBackStackEntry
         ?.savedStateHandle
-        ?.get<UsefulHabit>("habit") ?: error("habit cannot be null")
+        ?.get<UsefulHabit>("habit")
 
     LaunchedEffect(viewModel) {
         viewModel.getData(habit)
@@ -44,7 +45,10 @@ fun UsefulHabitDetailsScreen(
                 longestStreak = content.longestStreak,
                 startedAt = content.startedAt,
                 total = content.total,
-                onEditClick = { },
+                onEditClick = {
+                    navController.currentBackStackEntry?.savedStateHandle?.set("habit", habit)
+                    navController.navigate(UPDATE_USEFUL_HABIT_ROUTE)
+                },
                 onDeleteClick = {
                     deleteDialogOpen = true
                 }

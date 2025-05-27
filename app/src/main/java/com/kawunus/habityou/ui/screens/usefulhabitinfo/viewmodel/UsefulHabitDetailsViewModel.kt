@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class UsefulHabitDetailsViewModel(
     private val calculateStreaks: CalculateStreaksUseCase,
-    private val deleteUsefulHabitById: DeleteUsefulHabitByIdUseCase
+    private val deleteUsefulHabitById: DeleteUsefulHabitByIdUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<UsefulHabitDetailsScreenState>(
@@ -21,32 +21,36 @@ class UsefulHabitDetailsViewModel(
     )
     val state = _state.asStateFlow()
 
-    fun getData(habit: UsefulHabit) {
+    fun getData(habit: UsefulHabit?) {
         viewModelScope.launch {
+            if (habit == null) {
+                renderState(Deleted)
+            } else {
+                val total = habit.completed.size
+                val longestStreak = calculateStreaks(habit.id).first().maxByOrNull {
+                    it.length
+                }?.length ?: 0
+                val startedAt = habit.completed.sortedBy { date ->
+                    date
+                }.getOrNull(0)
 
-            val total = habit.completed.size
-            val longestStreak = calculateStreaks(habit.id).first().maxByOrNull {
-                it.length
-            }?.length ?: 0
-            val startedAt = habit.completed.sortedBy { date ->
-                date
-            }.getOrNull(0)
-
-            val contentState = UsefulHabitDetailsScreenState.Content(
-                frequencyResId = habit.type.userReadableStringRes,
-                habitName = habit.name,
-                score = habit.score?.toFloat() ?: 0f,
-                streak = habit.streak ?: 0,
-                total = total,
-                longestStreak = longestStreak,
-                startedAt = startedAt.toString(),
-            )
-            renderState(contentState)
+                val contentState = UsefulHabitDetailsScreenState.Content(
+                    frequencyResId = habit.type.userReadableStringRes,
+                    habitName = habit.name,
+                    score = habit.score?.toFloat() ?: 0f,
+                    streak = habit.streak ?: 0,
+                    total = total,
+                    longestStreak = longestStreak,
+                    startedAt = startedAt.toString(),
+                )
+                renderState(contentState)
+            }
         }
     }
 
-    fun deleteHabit(habit: UsefulHabit) {
+    fun deleteHabit(habit: UsefulHabit?) {
         viewModelScope.launch {
+            if (habit == null) return@launch
             deleteUsefulHabitById(habitId = habit.id)
             renderState(Deleted)
         }
