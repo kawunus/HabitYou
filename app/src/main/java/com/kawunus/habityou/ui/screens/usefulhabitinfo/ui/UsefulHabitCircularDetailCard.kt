@@ -57,7 +57,7 @@ fun UsefulHabitCircularDetailCard(
             .aspectRatio(1f),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.outlinedCardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
         ),
         elevation = CardDefaults.outlinedCardElevation(defaultElevation = 4.dp),
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.surface)

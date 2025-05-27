@@ -32,7 +32,7 @@ fun UsefulHabitDetailCard(
             .height(160.dp),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.outlinedCardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
+            containerColor = MaterialTheme.colorScheme.surfaceContainer
         ),
         elevation = CardDefaults.outlinedCardElevation(defaultElevation = 4.dp),
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.surface)
@@ -45,13 +45,13 @@ fun UsefulHabitDetailCard(
                     .weight(0.7f)
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(bottomStart = 12.dp, bottomEnd = 12.dp))
-                    .background(MaterialTheme.colorScheme.surface),
+                    .background(MaterialTheme.colorScheme.primaryContainer),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = value,
                     style = MaterialTheme.typography.displayMedium,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
