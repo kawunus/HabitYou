@@ -11,12 +11,14 @@ import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.EDIT_
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_NOTE_ROUTE
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_USEFUL_HABIT_ROUTE
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.UPDATE_USEFUL_HABIT_ROUTE
+import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.USEFUL_HABIT_DETAILS_ROUTE
 import com.kawunus.habityou.ui.screens.badhabits.ui.BadHabitsScreen
 import com.kawunus.habityou.ui.screens.diary.ui.DiaryScreen
 import com.kawunus.habityou.ui.screens.editnote.ui.EditNoteScreen
 import com.kawunus.habityou.ui.screens.newnote.ui.NewNoteScreen
 import com.kawunus.habityou.ui.screens.newusefulhabit.ui.NewUsefulHabitScreen
 import com.kawunus.habityou.ui.screens.updateusefulhabit.ui.UpdateUsefulHabitScreen
+import com.kawunus.habityou.ui.screens.usefulhabitinfo.ui.UsefulHabitDetailsScreen
 import com.kawunus.habityou.ui.screens.usefulhabits.ui.UsefulHabitsScreen
 
 
@@ -82,6 +84,17 @@ fun NavigationHost(
             materialPopExitTransition()
         }) {
             UpdateUsefulHabitScreen(navController = navController)
+        }
+        composable(USEFUL_HABIT_DETAILS_ROUTE, enterTransition = {
+            materialEnterTransition()
+        }, exitTransition = {
+            materialExitTransition()
+        }, popEnterTransition = {
+            materialPopEnterTransition()
+        }, popExitTransition = {
+            materialPopExitTransition()
+        }) {
+            UsefulHabitDetailsScreen(navController = navController)
         }
     }
 }
