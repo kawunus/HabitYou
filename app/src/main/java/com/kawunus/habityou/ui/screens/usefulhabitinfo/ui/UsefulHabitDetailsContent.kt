@@ -26,6 +26,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kawunus.habityou.R
 import com.kawunus.habityou.domain.model.UsefulHabitFrequency
+import java.time.LocalDate
+import java.time.format.TextStyle
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -35,7 +38,7 @@ internal fun UsefulHabitDetailsContent(
     score: Float,
     streak: Int,
     longestStreak: Int,
-    startedAt: String,
+    startedAt: LocalDate?,
     total: Int,
     onEditClick: () -> Unit,
     onDeleteClick: () -> Unit
@@ -112,9 +115,19 @@ internal fun UsefulHabitDetailsContent(
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
+                    val startedDisplayText = if (startedAt == null) {
+                        stringResource(R.string.useful_habit_details_not_started)
+                    } else {
+                        "${startedAt.dayOfMonth} ${
+                            startedAt.month.getDisplayName(
+                                TextStyle.SHORT_STANDALONE,
+                                Locale.getDefault()
+                            )
+                        }"
+                    }
                     UsefulHabitDetailCard(
                         title = stringResource(R.string.useful_habit_details_started),
-                        value = startedAt,
+                        value = startedDisplayText,
                         modifier = Modifier.weight(1f)
                     )
 
@@ -141,7 +154,7 @@ fun UsefulHabitDetailsPreview_Content() {
         score = 53f,
         streak = 5,
         longestStreak = 20,
-        startedAt = "5 мая",
+        startedAt = null,
         total = 26,
         onEditClick = { },
         onDeleteClick = { }

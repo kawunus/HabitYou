@@ -56,4 +56,5 @@
     <string name="useful_habit_details_longest">Максимум</string>
     <string name="useful_habit_details_started">Начато</string>
     <string name="useful_habit_details_total">Всего</string>
+    <string name="useful_habit_details_not_started">Нет</string>
 </resources>

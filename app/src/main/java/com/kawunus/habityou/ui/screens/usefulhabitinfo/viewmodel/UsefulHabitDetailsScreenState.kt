@@ -1,5 +1,7 @@
 package com.kawunus.habityou.ui.screens.usefulhabitinfo.viewmodel
 
+import java.time.LocalDate
+
 sealed class UsefulHabitDetailsScreenState {
 
     data class Content(
@@ -8,11 +10,11 @@ sealed class UsefulHabitDetailsScreenState {
         val score: Float,
         val streak: Int,
         val longestStreak: Int,
-        val startedAt: String,
+        val startedAt: LocalDate? = null,
         val total: Int,
     ) : UsefulHabitDetailsScreenState()
 
-    object Loading : UsefulHabitDetailsScreenState()
+    data object Loading : UsefulHabitDetailsScreenState()
 
-    object Deleted : UsefulHabitDetailsScreenState()
+    data object Deleted : UsefulHabitDetailsScreenState()
 }

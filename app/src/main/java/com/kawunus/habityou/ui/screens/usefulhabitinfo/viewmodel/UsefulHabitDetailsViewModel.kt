@@ -41,7 +41,7 @@ class UsefulHabitDetailsViewModel(
                     streak = habit.streak ?: 0,
                     total = total,
                     longestStreak = longestStreak,
-                    startedAt = startedAt.toString(),
+                    startedAt = startedAt,
                 )
                 renderState(contentState)
             }
