@@ -27,7 +27,7 @@ class UsefulHabitDetailsViewModel(
             }?.length ?: 0
             val startedAt = habit.completed.sortedBy { date ->
                 date
-            }[0]
+            }.getOrNull(0)
 
             val contentState = UsefulHabitDetailsScreenState.Content(
                 frequencyResId = habit.type.userReadableStringRes,
