@@ -4,9 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.kawunus.habityou.R
 import com.kawunus.habityou.domain.model.UsefulHabit
+import com.kawunus.habityou.ui.common.dialog.delete.DeleteDialog
 import com.kawunus.habityou.ui.screens.usefulhabitinfo.viewmodel.UsefulHabitDetailsScreenState
 import com.kawunus.habityou.ui.screens.usefulhabitinfo.viewmodel.UsefulHabitDetailsViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -20,11 +25,14 @@ fun UsefulHabitDetailsScreen(
 
     val habit = navController.previousBackStackEntry
         ?.savedStateHandle
-        ?.get<UsefulHabit>("habit") ?: error("БЛЯТЬ НЕ МОЖЕТ ПРИВЫЧКА БЫТЬ NULL")
+        ?.get<UsefulHabit>("habit") ?: error("habit cannot be null")
 
     LaunchedEffect(viewModel) {
         viewModel.getData(habit)
     }
+
+    var deleteDialogOpen by remember { mutableStateOf(false) }
+
     when (state) {
         is UsefulHabitDetailsScreenState.Content -> {
             val content = (state as UsefulHabitDetailsScreenState.Content)
@@ -37,7 +45,9 @@ fun UsefulHabitDetailsScreen(
                 startedAt = content.startedAt,
                 total = content.total,
                 onEditClick = { },
-                onDeleteClick = { }
+                onDeleteClick = {
+                    deleteDialogOpen = true
+                }
             )
         }
 
@@ -48,5 +58,16 @@ fun UsefulHabitDetailsScreen(
         UsefulHabitDetailsScreenState.Deleted -> {
             navController.popBackStack()
         }
+    }
+
+    if (deleteDialogOpen) {
+        DeleteDialog(
+            titleResId = R.string.dialog_delete_title_habit,
+            onConfirm = {
+                viewModel.deleteHabit(habit)
+                deleteDialogOpen = false
+            },
+            onDismiss = { deleteDialogOpen = false }
+        )
     }
 }

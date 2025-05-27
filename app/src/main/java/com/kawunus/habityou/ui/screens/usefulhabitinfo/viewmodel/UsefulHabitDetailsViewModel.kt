@@ -3,14 +3,17 @@ package com.kawunus.habityou.ui.screens.usefulhabitinfo.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kawunus.habityou.domain.api.usecase.CalculateStreaksUseCase
+import com.kawunus.habityou.domain.api.usecase.DeleteUsefulHabitByIdUseCase
 import com.kawunus.habityou.domain.model.UsefulHabit
+import com.kawunus.habityou.ui.screens.usefulhabitinfo.viewmodel.UsefulHabitDetailsScreenState.Deleted
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class UsefulHabitDetailsViewModel(
-    private val calculateStreaks: CalculateStreaksUseCase
+    private val calculateStreaks: CalculateStreaksUseCase,
+    private val deleteUsefulHabitById: DeleteUsefulHabitByIdUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<UsefulHabitDetailsScreenState>(
@@ -39,6 +42,13 @@ class UsefulHabitDetailsViewModel(
                 startedAt = startedAt.toString(),
             )
             renderState(contentState)
+        }
+    }
+
+    fun deleteHabit(habit: UsefulHabit) {
+        viewModelScope.launch {
+            deleteUsefulHabitById(habitId = habit.id)
+            renderState(Deleted)
         }
     }
 
