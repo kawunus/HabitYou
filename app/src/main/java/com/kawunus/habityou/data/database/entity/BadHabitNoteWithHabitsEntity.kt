@@ -7,7 +7,7 @@ data class BadHabitNoteWithHabitsEntity(
     @Embedded val habit: BadHabitEntity,
     @Relation(
         parentColumn = "id",
-        entityColumn = "useful_habit_id"
+        entityColumn = "bad_habit_id"
     )
     val notes: List<BadHabitNoteEntity>
 )

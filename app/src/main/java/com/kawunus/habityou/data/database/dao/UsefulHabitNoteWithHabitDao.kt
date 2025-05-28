@@ -10,6 +10,6 @@ import kotlinx.coroutines.flow.Flow
 interface UsefulHabitNoteWithHabitDao {
 
     @Transaction
-    @Query("SELECT * FROM useful_habit_notes")
-    fun getAllUsefulHabitsWithEntries(): Flow<List<UsefulHabitNoteWithHabitsEntity>>
+    @Query("SELECT * FROM useful_habits")
+    fun getAllUsefulHabitsWithNotes(): Flow<List<UsefulHabitNoteWithHabitsEntity>>
 }

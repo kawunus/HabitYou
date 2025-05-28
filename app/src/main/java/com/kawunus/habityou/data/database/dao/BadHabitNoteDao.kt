@@ -22,7 +22,7 @@ interface BadHabitNoteDao {
     fun getNotesByHabitId(habitId: Int): Flow<List<BadHabitNoteEntity?>>
 
     @Query("SELECT * FROM bad_habit_notes")
-    fun getAllNotes(): Flow<List<BadHabitNoteEntity?>>
+    fun getAllNotes(): Flow<List<BadHabitNoteEntity>>
 
     @Update
     suspend fun update(note: BadHabitNoteEntity)

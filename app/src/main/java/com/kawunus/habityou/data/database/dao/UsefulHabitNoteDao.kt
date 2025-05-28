@@ -1,5 +1,6 @@
 package com.kawunus.habityou.data.database.dao
 
+import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
@@ -7,6 +8,7 @@ import androidx.room.Update
 import com.kawunus.habityou.data.database.entity.UsefulHabitNoteEntity
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface UsefulHabitNoteDao {
 
     @Insert
@@ -19,7 +21,7 @@ interface UsefulHabitNoteDao {
     fun getNotesByHabitId(habitId: Int): Flow<List<UsefulHabitNoteEntity?>>
 
     @Query("SELECT * FROM useful_habit_notes")
-    fun getAllNotes(): Flow<List<UsefulHabitNoteEntity?>>
+    fun getAllNotes(): Flow<List<UsefulHabitNoteEntity>>
 
     @Update
     suspend fun update(note: UsefulHabitNoteEntity)

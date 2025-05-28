@@ -14,7 +14,8 @@ val dataModule = module {
     }
 
     single {
-        Room.databaseBuilder(androidContext(), AppDatabase::class.java, "database.db").build()
+        Room.databaseBuilder(androidContext(), AppDatabase::class.java, "habit-you.db")
+            .fallbackToDestructiveMigration(true).build()
     }
 
     single { get<AppDatabase>().badHabitDao() }
