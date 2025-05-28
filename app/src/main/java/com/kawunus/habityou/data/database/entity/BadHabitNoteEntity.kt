@@ -3,8 +3,8 @@ package com.kawunus.habityou.data.database.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "bad_habit_note")
-data class BadHabitNote(
+@Entity(tableName = "bad_habit_notes")
+data class BadHabitNoteEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val content: String,

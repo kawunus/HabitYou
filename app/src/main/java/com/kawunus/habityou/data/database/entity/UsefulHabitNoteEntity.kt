@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "useful_habit_notes")
-data class UsefulHabitNote(
+data class UsefulHabitNoteEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val content: String,
