@@ -32,6 +32,8 @@
     <string name="note_type_bad_habit">Вредная привычка</string>
     <string name="note_type_useful_habit">Полезная привычка</string>
     <string name="note_type_none">Нет</string>
+    <string name="note_type">Тип заметки</string>
+    <string name="note_habit_name">Название привычки</string>
 
     <!-- Delete dialog strings -->
     <string name="dialog_delete_title_note">Вы хотите удалить запись в дневнике?</string>
