@@ -5,8 +5,11 @@ import com.kawunus.habityou.data.database.dao.NoteDao
 import com.kawunus.habityou.data.database.dao.UsefulHabitNoteDao
 import com.kawunus.habityou.data.dto.NoteDto
 import com.kawunus.habityou.domain.api.repository.NoteRepository
+import com.kawunus.habityou.domain.model.NoteType
+import com.kawunus.habityou.utils.mappers.toBadHabitNoteEntity
 import com.kawunus.habityou.utils.mappers.toNoteDto
 import com.kawunus.habityou.utils.mappers.toNoteEntity
+import com.kawunus.habityou.utils.mappers.toUsefulHabitNoteEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
@@ -24,8 +27,34 @@ class NoteRepositoryImpl(
         noteDao.deleteNote(note.toNoteEntity())
     }
 
-    override suspend fun updateNote(note: NoteDto) {
-        noteDao.updateNote(note.toNoteEntity())
+    override suspend fun updateNote(oldNote: NoteDto, newNote: NoteDto, habitId: Int?) {
+        when (oldNote.type) {
+            NoteType.USEFUL_HABIT -> {
+                usefulHabitNoteDao.delete(newNote.toUsefulHabitNoteEntity(habitId ?: return))
+            }
+
+            NoteType.BAD_HABIT -> {
+                badHabitNoteDao.delete(oldNote.toBadHabitNoteEntity(habitId ?: return))
+            }
+
+            NoteType.NONE -> {
+                noteDao.deleteNote(oldNote.toNoteEntity())
+            }
+        }
+
+        when (newNote.type) {
+            NoteType.USEFUL_HABIT -> {
+                usefulHabitNoteDao.insert(newNote.toUsefulHabitNoteEntity(habitId ?: return))
+            }
+
+            NoteType.BAD_HABIT -> {
+                badHabitNoteDao.insert(newNote.toBadHabitNoteEntity(habitId ?: return))
+            }
+
+            NoteType.NONE -> {
+                noteDao.insertNote(newNote.toNoteEntity())
+            }
+        }
     }
 
     override fun getAllNotes(): Flow<List<NoteDto>> {

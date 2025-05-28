@@ -65,3 +65,23 @@ fun BadHabitNoteEntity.toNoteDto(): NoteDto {
         type = NoteType.BAD_HABIT
     )
 }
+
+fun NoteDto.toUsefulHabitNoteEntity(habitId: Int): UsefulHabitNoteEntity {
+    return UsefulHabitNoteEntity(
+        id = id,
+        content = content,
+        date = date,
+        title = title,
+        usefulHabitId = habitId
+    )
+}
+
+fun NoteDto.toBadHabitNoteEntity(habitId: Int): BadHabitNoteEntity {
+    return BadHabitNoteEntity(
+        id = id,
+        content = content,
+        date = date,
+        title = title,
+        badHabitId = habitId
+    )
+}
