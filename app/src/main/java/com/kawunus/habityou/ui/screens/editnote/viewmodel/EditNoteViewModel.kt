@@ -16,7 +16,7 @@ class EditNoteViewModel(private val editNoteInteractor: EditNoteInteractor) : Vi
 
     fun editNote(note: Note) {
         viewModelScope.launch {
-            editNoteInteractor.editNote(note)
+            //  editNoteInteractor.editNote(note)
             _state.value = EditNoteScreenState.Edited
         }
     }

@@ -15,4 +15,6 @@ object NavigationConstants {
     const val NEW_USEFUL_HABIT_ROUTE = "newUsefulHabit"
 
     const val UPDATE_USEFUL_HABIT_ROUTE = "updateUsefulHabit"
+
+    const val USEFUL_HABIT_DETAILS_ROUTE = "usefulHabitDetailsRoute"
 }

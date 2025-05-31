@@ -8,5 +8,7 @@ data class Note(
     val id: Int = 0,
     val content: String,
     val date: Long,
-    val title: String
+    val title: String,
+    val type: NoteType,
+    val habitId: Int? = null
 ) : Parcelable

@@ -7,8 +7,8 @@ import com.kawunus.habityou.utils.mappers.toNoteDto
 
 class EditNoteInteractorImpl(private val repository: NoteRepository) : EditNoteInteractor {
 
-    override suspend fun editNote(note: Note) {
-        repository.updateNote(note.toNoteDto())
+    override suspend fun editNote(oldNote: Note, newNote: Note, habitId: Int) {
+        repository.updateNote(oldNote.toNoteDto(), newNote.toNoteDto(), habitId)
     }
 
     override suspend fun deleteNote(note: Note) {

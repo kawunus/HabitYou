@@ -1,11 +1,15 @@
 package com.kawunus.habityou.ui.screens.newnote.ui
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -21,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.kawunus.habityou.R
+import com.kawunus.habityou.domain.model.NoteType
 import com.kawunus.habityou.ui.screens.newnote.viewmodel.NewNoteScreenState
 import com.kawunus.habityou.ui.screens.newnote.viewmodel.NewNoteViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -78,9 +83,51 @@ fun NewNoteScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(300.dp)
-                .padding(horizontal = 16.dp)
-                .padding(bottom = 16.dp),
+                .padding(horizontal = 16.dp),
             maxLines = 10
         )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        var typeExpanded by remember { mutableStateOf(false) }
+        var typeSelected by remember { mutableStateOf(NoteType.NONE) }
+        val typeOptions = NoteType.entries.toTypedArray()
+        ExposedDropdownMenuBox(
+            expanded = typeExpanded,
+            onExpandedChange = { typeExpanded = !typeExpanded },
+            modifier = Modifier.padding(horizontal = 16.dp)
+        ) {
+            OutlinedTextField(
+                modifier = Modifier
+                    .menuAnchor(type, enabled)
+                    .fillMaxWidth(),
+                readOnly = true,
+                value = stringResource(id = typeSelected.userReadableStringRes),
+                onValueChange = {},
+                label = { Text(stringResource(R.string.note_type)) },
+                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = typeExpanded) },
+                colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors()
+            )
+            ExposedDropdownMenu(
+                expanded = typeExpanded,
+                onDismissRequest = { typeExpanded = false },
+            ) {
+                typeOptions.forEach { selectionOption ->
+                    DropdownMenuItem(
+                        text = { Text(stringResource(id = selectionOption.userReadableStringRes)) },
+                        onClick = {
+                            typeSelected = selectionOption
+                            typeExpanded = false
+                        },
+                        contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
+                    )
+                }
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        AnimatedVisibility(visible = typeSelected != NoteType.NONE) {
+
+        }
     }
 }

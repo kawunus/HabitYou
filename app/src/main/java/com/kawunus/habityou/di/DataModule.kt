@@ -14,7 +14,8 @@ val dataModule = module {
     }
 
     single {
-        Room.databaseBuilder(androidContext(), AppDatabase::class.java, "database.db").build()
+        Room.databaseBuilder(androidContext(), AppDatabase::class.java, "habit-you.db")
+            .fallbackToDestructiveMigration(true).build()
     }
 
     single { get<AppDatabase>().badHabitDao() }
@@ -26,6 +27,14 @@ val dataModule = module {
     single { get<AppDatabase>().usefulHabitWithEntriesDao() }
 
     single { get<AppDatabase>().entryDao() }
+
+    single { get<AppDatabase>().badHabitNoteDao() }
+
+    single { get<AppDatabase>().usefulHabitNoteDao() }
+
+    single { get<AppDatabase>().badHabitNoteWithHabitDao() }
+
+    single { get<AppDatabase>().usefulHabitNoteWithHabitDao() }
 
     single { Clock.systemDefaultZone() }
 }

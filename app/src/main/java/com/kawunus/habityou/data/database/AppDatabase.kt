@@ -4,19 +4,25 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.kawunus.habityou.data.database.dao.BadHabitDao
+import com.kawunus.habityou.data.database.dao.BadHabitNoteDao
+import com.kawunus.habityou.data.database.dao.BadHabitNoteWithHabitDao
 import com.kawunus.habityou.data.database.dao.EntryDao
 import com.kawunus.habityou.data.database.dao.NoteDao
 import com.kawunus.habityou.data.database.dao.UsefulHabitDao
+import com.kawunus.habityou.data.database.dao.UsefulHabitNoteDao
+import com.kawunus.habityou.data.database.dao.UsefulHabitNoteWithHabitDao
 import com.kawunus.habityou.data.database.dao.UsefulHabitWithEntriesDao
 import com.kawunus.habityou.data.database.entity.BadHabitEntity
+import com.kawunus.habityou.data.database.entity.BadHabitNoteEntity
 import com.kawunus.habityou.data.database.entity.EntryEntity
 import com.kawunus.habityou.data.database.entity.NoteEntity
 import com.kawunus.habityou.data.database.entity.UsefulHabitEntity
+import com.kawunus.habityou.data.database.entity.UsefulHabitNoteEntity
 import com.kawunus.habityou.utils.converters.DatabaseConverter
 
 @Database(
     version = 1,
-    entities = [BadHabitEntity::class, NoteEntity::class, UsefulHabitEntity::class, EntryEntity::class]
+    entities = [BadHabitEntity::class, NoteEntity::class, UsefulHabitEntity::class, EntryEntity::class, BadHabitNoteEntity::class, UsefulHabitNoteEntity::class]
 )
 @TypeConverters(DatabaseConverter::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -31,4 +37,11 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun entryDao(): EntryDao
 
+    abstract fun badHabitNoteDao(): BadHabitNoteDao
+
+    abstract fun usefulHabitNoteDao(): UsefulHabitNoteDao
+
+    abstract fun badHabitNoteWithHabitDao(): BadHabitNoteWithHabitDao
+
+    abstract fun usefulHabitNoteWithHabitDao(): UsefulHabitNoteWithHabitDao
 }

@@ -19,6 +19,7 @@
     <string name="expand_icon_description">Развернуть</string>
     <string name="collapse_icon_description">Свернуть</string>
     <string name="more_icon_description">Подробнее</string>
+    <string name="calendar_icon_description">Календарь"</string>
 
     <!-- Diary screen strings -->
     <string name="diary_empty">Добавьте запись с помощью кнопки ниже!</string>
@@ -28,6 +29,11 @@
     <string name="new_item_save">Сохранить</string>
     <string name="new_note_title">Заголовок заметки</string>
     <string name="new_note_description">Содержание заметки</string>
+    <string name="note_type_bad_habit">Вредная привычка</string>
+    <string name="note_type_useful_habit">Полезная привычка</string>
+    <string name="note_type_none">Нет</string>
+    <string name="note_type">Тип заметки</string>
+    <string name="note_habit_name">Название привычки</string>
 
     <!-- Delete dialog strings -->
     <string name="dialog_delete_title_note">Вы хотите удалить запись в дневнике?</string>
@@ -49,4 +55,11 @@
     <!-- Update useful habit strings -->
     <string name="update_useful_habit_top_bar">Редактирование привычки</string>
 
+    <!-- Useful habit details strings -->
+    <string name="useful_habit_details_score">Результат</string>
+    <string name="useful_habit_details_streak">Подряд</string>
+    <string name="useful_habit_details_longest">Максимум</string>
+    <string name="useful_habit_details_started">Начато</string>
+    <string name="useful_habit_details_total">Всего</string>
+    <string name="useful_habit_details_not_started">Нет</string>
 </resources>

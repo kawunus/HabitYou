@@ -17,6 +17,7 @@ import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.EDIT_
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_NOTE_ROUTE
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.NEW_USEFUL_HABIT_ROUTE
 import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.UPDATE_USEFUL_HABIT_ROUTE
+import com.kawunus.habityou.ui.common.navigation.model.NavigationConstants.USEFUL_HABIT_DETAILS_ROUTE
 import com.kawunus.habityou.ui.common.navigation.ui.BottomNavigationBar
 import com.kawunus.habityou.ui.common.navigation.ui.NavigationHost
 import com.kawunus.habityou.ui.theme.HabituTheme
@@ -38,7 +39,8 @@ class MainActivity : ComponentActivity() {
                         NEW_NOTE_ROUTE,
                         EDIT_NOTE_ROUTE,
                         NEW_USEFUL_HABIT_ROUTE,
-                        UPDATE_USEFUL_HABIT_ROUTE
+                        UPDATE_USEFUL_HABIT_ROUTE,
+                        USEFUL_HABIT_DETAILS_ROUTE
                     )
 
                 val showBottomBar = currentRoute !in hideBottomBarRoutes
